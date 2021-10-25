@@ -1459,7 +1459,8 @@
                     "format": "int64"
                 },
                 "IdHistoriaClinica": {
-                    "$ref": "#/definitions/models.MedicinaHistoriaClinica"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Irradiaciones": {
                     "type": "string"
@@ -1491,7 +1492,8 @@
                     "format": "datetime"
                 },
                 "IdHojaHistoria": {
-                    "$ref": "#/definitions/models.MedicinaHojaHistoria"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "IdTipoOdontograma": {
                     "$ref": "#/definitions/models.TipoOdontograma"
@@ -1531,7 +1533,8 @@
                     "format": "int64"
                 },
                 "IdHojaHistoria": {
-                    "$ref": "#/definitions/models.MedicinaHojaHistoria"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Observaciones": {
                     "type": "string"
@@ -1553,7 +1556,8 @@
                     "format": "int64"
                 },
                 "IdHojaHistoria": {
-                    "$ref": "#/definitions/models.MedicinaHojaHistoria"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Manchas": {
                     "type": "string"
@@ -1599,7 +1603,8 @@
                     "format": "int64"
                 },
                 "IdHojaHistoria": {
-                    "$ref": "#/definitions/models.MedicinaHojaHistoria"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Labios": {
                     "type": "string"
@@ -1696,14 +1701,6 @@
                 }
             }
         },
-        "models.MedicinaHistoriaClinica": {
-            "title": "MedicinaHistoriaClinica",
-            "type": "object"
-        },
-        "models.MedicinaHojaHistoria": {
-            "title": "MedicinaHojaHistoria",
-            "type": "object"
-        },
         "models.Odontograma": {
             "title": "Odontograma",
             "type": "object",
@@ -1712,7 +1709,8 @@
                     "type": "string"
                 },
                 "IdHojaHistoria": {
-                    "$ref": "#/definitions/models.MedicinaHojaHistoria"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "IdOdontograma": {
                     "type": "integer",

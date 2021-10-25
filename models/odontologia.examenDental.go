@@ -10,17 +10,17 @@ import (
 )
 
 type ExamenDental struct {
-	IdExamenDental   int                   `orm:"column(id_examen_dental);pk;auto"`
-	IdHojaHistoria   *MedicinaHojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
-	Supernumerarios  string                `orm:"column(supernumerarios);null"`
-	Abrasion         string                `orm:"column(abrasion);null"`
-	Manchas          string                `orm:"column(manchas);null"`
-	PatologiaPulpar  string                `orm:"column(patologia_pulpar);null"`
-	PlacaBlanda      string                `orm:"column(placa_blanda);null"`
-	PlacaCalcificada string                `orm:"column(placa_calcificada);null"`
-	Oclusion         string                `orm:"column(oclusiones);null"`
-	Otros            string                `orm:"column(otros);null"`
-	Observaciones    string                `orm:"column(observaciones);null"`
+	IdExamenDental   int    `orm:"column(id_examen_dental);pk;auto"`
+	IdHojaHistoria   *int   `orm:"column(id_hoja_historia);rel(fk);null"`
+	Supernumerarios  string `orm:"column(supernumerarios);null"`
+	Abrasion         string `orm:"column(abrasion);null"`
+	Manchas          string `orm:"column(manchas);null"`
+	PatologiaPulpar  string `orm:"column(patologia_pulpar);null"`
+	PlacaBlanda      string `orm:"column(placa_blanda);null"`
+	PlacaCalcificada string `orm:"column(placa_calcificada);null"`
+	Oclusion         string `orm:"column(oclusiones);null"`
+	Otros            string `orm:"column(otros);null"`
+	Observaciones    string `orm:"column(observaciones);null"`
 }
 
 func (t *ExamenDental) TableName() string {

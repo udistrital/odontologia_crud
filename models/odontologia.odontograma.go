@@ -10,11 +10,11 @@ import (
 )
 
 type Odontograma struct {
-	IdOdontograma     int                   `orm:"column(id_odontograma);pk;auto"`
-	IdHojaHistoria    *MedicinaHojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
-	Diagrama          string                `orm:"column(diagrama);null"`
-	Observaciones     string                `orm:"column(observaciones);null"`
-	IdTipoOdontograma *TipoOdontograma      `orm:"column(id_tipo_odontograma);rel(fk);null"`
+	IdOdontograma     int              `orm:"column(id_odontograma);pk;auto"`
+	IdHojaHistoria    *int             `orm:"column(id_hoja_historia);rel(fk);null"`
+	IdTipoOdontograma *TipoOdontograma `orm:"column(id_tipo_odontograma);rel(fk);null"`
+	Diagrama          string           `orm:"column(diagrama);null"`
+	Observaciones     string           `orm:"column(observaciones);null"`
 }
 
 func (p *Odontograma) TableName() string {

@@ -11,14 +11,14 @@ import (
 )
 
 type ControlPlaca struct {
-	IdcontrolPlaca    int                   `orm:"column(idcontrol_placa);pk;auto"`
-	IndiceAnterior    int                   `orm:"column(indice_anterior);null"`
-	IndiceActual      int                   `orm:"column(indice_actual);null"`
-	Fecha             time.Time             `orm:"column(fecha);type(date);null"`
-	IdHojaHistoria    *MedicinaHojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
-	Vestibulares      string                `orm:"column(vestibulares);null"`
-	Observaciones     string                `orm:"column(observaciones);null"`
-	IdTipoOdontograma *TipoOdontograma      `orm:"column(id_tipo_odontograma);rel(fk);null"`
+	IdcontrolPlaca    int              `orm:"column(idcontrol_placa);pk;auto"`
+	IdHojaHistoria    *int             `orm:"column(id_hoja_historia);rel(fk);null"`
+	IdTipoOdontograma *TipoOdontograma `orm:"column(id_tipo_odontograma);rel(fk);null"`
+	IndiceAnterior    int              `orm:"column(indice_anterior);null"`
+	IndiceActual      int              `orm:"column(indice_actual);null"`
+	Fecha             time.Time        `orm:"column(fecha);type(date);null"`
+	Vestibulares      string           `orm:"column(vestibulares);null"`
+	Observaciones     string           `orm:"column(observaciones);null"`
 }
 
 func (t *ControlPlaca) TableName() string {
