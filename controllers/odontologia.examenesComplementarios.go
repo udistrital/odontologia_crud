@@ -11,12 +11,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type OdontologiaExamenesComplementariosController struct {
+type ExamenesComplementariosController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *OdontologiaExamenesComplementariosController) URLMapping() {
+func (c *ExamenesComplementariosController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *OdontologiaExamenesComplementariosController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description agregar un registro en la tabla OdontologiaExamenesComplementarios
-// @Param	body		body 	models.OdontologiaExamenesComplementarios	true		"Cuerpo para el contenido de OdontologiaExamenesComplementarios"
-// @Success 201 {int} models.OdontologiaExamenesComplementarios
+// @Description agregar un registro en la tabla ExamenesComplementarios
+// @Param	body		body 	models.ExamenesComplementarios	true		"Cuerpo para el contenido de ExamenesComplementarios"
+// @Success 201 {int} models.ExamenesComplementarios
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
-func (c *OdontologiaExamenesComplementariosController) Post() {
-	var v models.OdontologiaExamenesComplementarios
+func (c *ExamenesComplementariosController) Post() {
+	var v models.ExamenesComplementarios
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddOdontologiaExamenesComplementarios(&v); err == nil {
+		if _, err := models.AddExamenesComplementarios(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *OdontologiaExamenesComplementariosController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description consultar un registro de la tabla OdontologiaExamenesComplementarios por su id
+// @Description consultar un registro de la tabla ExamenesComplementarios por su id
 // @Param	id		path 	string	true		"Id a consultar"
-// @Success 200 {object} models.OdontologiaExamenesComplementarios
+// @Success 200 {object} models.ExamenesComplementarios
 // @Failure 403 :id está vacío
 // @router /:id [get]
-func (c *OdontologiaExamenesComplementariosController) GetOne() {
+func (c *ExamenesComplementariosController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetOdontologiaExamenesComplementariosById(id)
+	v, err := models.GetExamenesComplementariosById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *OdontologiaExamenesComplementariosController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description consulta todos los registros de la tabla OdontologiaExamenesComplementarios
+// @Description consulta todos los registros de la tabla ExamenesComplementarios
 // @Param   query   consulta    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
 // @Param   fields  consulta    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
 // @Param   sortby  consulta    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
 // @Param   order   consulta    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
 // @Param   limit   consulta    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
 // @Param   offset  consulta    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
-// @Success 200 {object} models.OdontologiaExamenesComplementarios
+// @Success 200 {object} models.ExamenesComplementarios
 // @Failure 403
 // @router / [get]
-func (c *OdontologiaExamenesComplementariosController) GetAll() {
+func (c *ExamenesComplementariosController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -118,7 +118,7 @@ func (c *OdontologiaExamenesComplementariosController) GetAll() {
 			query[k] = v
 		}
 	}
-	l, err := models.GetAllOdontologiaExamenesComplementarios(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllExamenesComplementarios(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -129,18 +129,18 @@ func (c *OdontologiaExamenesComplementariosController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description actualizar un registro de la tabla OdontologiaExamenesComplementarios
+// @Description actualizar un registro de la tabla ExamenesComplementarios
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.OdontologiaExamenesComplementarios	true		"Cuerpo para el contenido de OdontologiaExamenesComplementarios"
-// @Success 200 {object} models.OdontologiaExamenesComplementarios
+// @Param	body		body 	models.ExamenesComplementarios	true		"Cuerpo para el contenido de ExamenesComplementarios"
+// @Success 200 {object} models.ExamenesComplementarios
 // @Failure 403 :id no es entero
 // @router /:id [put]
-func (c *OdontologiaExamenesComplementariosController) Put() {
+func (c *ExamenesComplementariosController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.OdontologiaExamenesComplementarios{IdExamenesComplementarios: id}
+	v := models.ExamenesComplementarios{IdExamenesComplementarios: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateOdontologiaExamenesComplementarios(&v); err == nil {
+		if err := models.UpdateExamenesComplementarios(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -153,15 +153,15 @@ func (c *OdontologiaExamenesComplementariosController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description elimina un registro de la tabla OdontologiaExamenesComplementarios
+// @Description elimina un registro de la tabla ExamenesComplementarios
 // @Param	id		path 	string	true		"Id del registro a eliminar"
 // @Success 200 {string} borrado exitoso!
 // @Failure 403 Id vacío
 // @router /:id [delete]
-func (c *OdontologiaExamenesComplementariosController) Delete() {
+func (c *ExamenesComplementariosController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteOdontologiaExamenesComplementarios(id); err == nil {
+	if err := models.DeleteExamenesComplementarios(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

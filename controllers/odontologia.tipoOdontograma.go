@@ -11,12 +11,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type OdontologiaTipoOdontogramaController struct {
+type TipoOdontogramaController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *OdontologiaTipoOdontogramaController) URLMapping() {
+func (c *TipoOdontogramaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -31,10 +31,10 @@ func (c *OdontologiaTipoOdontogramaController) URLMapping() {
 // @Success 201 {int} models.OdontologiaTipoOdontograma
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
-func (c *OdontologiaTipoOdontogramaController) Post() {
-	var v models.OdontologiaTipoOdontograma
+func (c *TipoOdontogramaController) Post() {
+	var v models.TipoOdontograma
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddOdontologiaTipoOdontograma(&v); err == nil {
+		if _, err := models.AddTipoOdontograma(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -53,10 +53,10 @@ func (c *OdontologiaTipoOdontogramaController) Post() {
 // @Success 200 {object} models.OdontologiaTipoOdontograma
 // @Failure 403 :id está vacío
 // @router /:id [get]
-func (c *OdontologiaTipoOdontogramaController) GetOne() {
+func (c *TipoOdontogramaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetOdontologiaTipoOdontogramaById(id)
+	v, err := models.GetTipoOdontogramaById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -77,7 +77,7 @@ func (c *OdontologiaTipoOdontogramaController) GetOne() {
 // @Success 200 {object} models.OdontologiaTipoOdontograma
 // @Failure 403
 // @router / [get]
-func (c *OdontologiaTipoOdontogramaController) GetAll() {
+func (c *TipoOdontogramaController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -118,7 +118,7 @@ func (c *OdontologiaTipoOdontogramaController) GetAll() {
 			query[k] = v
 		}
 	}
-	l, err := models.GetAllOdontologiaTipoOdontograma(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllTipoOdontograma(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -135,12 +135,12 @@ func (c *OdontologiaTipoOdontogramaController) GetAll() {
 // @Success 200 {object} models.OdontologiaTipoOdontograma
 // @Failure 403 :id no es entero
 // @router /:id [put]
-func (c *OdontologiaTipoOdontogramaController) Put() {
+func (c *TipoOdontogramaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.OdontologiaTipoOdontograma{IdTipoOdontograma: id}
+	v := models.TipoOdontograma{IdTipoOdontograma: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateOdontologiaTipoOdontograma(&v); err == nil {
+		if err := models.UpdateTipoOdontograma(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -158,10 +158,10 @@ func (c *OdontologiaTipoOdontogramaController) Put() {
 // @Success 200 {string} borrado exitoso!
 // @Failure 403 Id vacío
 // @router /:id [delete]
-func (c *OdontologiaTipoOdontogramaController) Delete() {
+func (c *TipoOdontogramaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteOdontologiaTipoOdontograma(id); err == nil {
+	if err := models.DeleteTipoOdontograma(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

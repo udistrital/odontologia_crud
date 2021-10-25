@@ -11,12 +11,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type OdontologiaControlPlacaController struct {
+type ControlPlacaController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *OdontologiaControlPlacaController) URLMapping() {
+func (c *ControlPlacaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *OdontologiaControlPlacaController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description agregar un registro en la tabla OdontologiaControlPlaca
-// @Param	body		body 	models.OdontologiaControlPlaca	true		"Cuerpo para el contenido de OdontologiaControlPlaca"
-// @Success 201 {int} models.OdontologiaControlPlaca
+// @Description agregar un registro en la tabla ControlPlaca
+// @Param	body		body 	models.ControlPlaca	true		"Cuerpo para el contenido de ControlPlaca"
+// @Success 201 {int} models.ControlPlaca
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
-func (c *OdontologiaControlPlacaController) Post() {
-	var v models.OdontologiaControlPlaca
+func (c *ControlPlacaController) Post() {
+	var v models.ControlPlaca
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddOdontologiaControlPlaca(&v); err == nil {
+		if _, err := models.AddControlPlaca(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *OdontologiaControlPlacaController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description consultar un registro de la tabla OdontologiaControlPlaca por su id
+// @Description consultar un registro de la tabla ControlPlaca por su id
 // @Param	id		path 	string	true		"Id a consultar"
-// @Success 200 {object} models.OdontologiaControlPlaca
+// @Success 200 {object} models.ControlPlaca
 // @Failure 403 :id está vacío
 // @router /:id [get]
-func (c *OdontologiaControlPlacaController) GetOne() {
+func (c *ControlPlacaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetOdontologiaControlPlacaById(id)
+	v, err := models.GetControlPlacaById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *OdontologiaControlPlacaController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description consulta todos los registros de la tabla OdontologiaControlPlaca
+// @Description consulta todos los registros de la tabla ControlPlaca
 // @Param   query   consulta    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
 // @Param   fields  consulta    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
 // @Param   sortby  consulta    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
 // @Param   order   consulta    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
 // @Param   limit   consulta    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
 // @Param   offset  consulta    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
-// @Success 200 {object} models.OdontologiaControlPlaca
+// @Success 200 {object} models.ControlPlaca
 // @Failure 403
 // @router / [get]
-func (c *OdontologiaControlPlacaController) GetAll() {
+func (c *ControlPlacaController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -118,7 +118,7 @@ func (c *OdontologiaControlPlacaController) GetAll() {
 			query[k] = v
 		}
 	}
-	l, err := models.GetAllOdontologiaControlPlaca(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllControlPlaca(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -129,18 +129,18 @@ func (c *OdontologiaControlPlacaController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description actualizar un registro de la tabla OdontologiaControlPlaca
+// @Description actualizar un registro de la tabla ControlPlaca
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.OdontologiaControlPlaca	true		"Cuerpo para el contenido de OdontologiaControlPlaca"
-// @Success 200 {object} models.OdontologiaControlPlaca
+// @Param	body		body 	models.ControlPlaca	true		"Cuerpo para el contenido de ControlPlaca"
+// @Success 200 {object} models.ControlPlaca
 // @Failure 403 :id no es entero
 // @router /:id [put]
-func (c *OdontologiaControlPlacaController) Put() {
+func (c *ControlPlacaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.OdontologiaControlPlaca{IdcontrolPlaca: id}
+	v := models.ControlPlaca{IdcontrolPlaca: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateOdontologiaControlPlaca(&v); err == nil {
+		if err := models.UpdateControlPlaca(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -153,15 +153,15 @@ func (c *OdontologiaControlPlacaController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description elimina un registro de la tabla OdontologiaControlPlaca
+// @Description elimina un registro de la tabla ControlPlaca
 // @Param	id		path 	string	true		"Id del registro a eliminar"
 // @Success 200 {string} borrado exitoso!
 // @Failure 403 Id vacío
 // @router /:id [delete]
-func (c *OdontologiaControlPlacaController) Delete() {
+func (c *ControlPlacaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteOdontologiaControlPlaca(id); err == nil {
+	if err := models.DeleteControlPlaca(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

@@ -11,12 +11,12 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type OdontologiaOdontogramaController struct {
+type OdontogramaController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *OdontologiaOdontogramaController) URLMapping() {
+func (c *OdontogramaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *OdontologiaOdontogramaController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description agregar un registro en la tabla OdontologiaOdontograma
-// @Param	body		body 	models.AccesoHOdontologiaOdontogramaistoriaClinica	true		"Cuerpo para el contenido de OdontologiaOdontograma"
-// @Success 201 {int} models.OdontologiaOdontograma
+// @Description agregar un registro en la tabla Odontograma
+// @Param	body		body 	models.AccesoHOdontogramaistoriaClinica	true		"Cuerpo para el contenido de Odontograma"
+// @Success 201 {int} models.Odontograma
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
-func (c *OdontologiaOdontogramaController) Post() {
-	var v models.OdontologiaOdontograma
+func (c *OdontogramaController) Post() {
+	var v models.Odontograma
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddOdontologiaOdontograma(&v); err == nil {
+		if _, err := models.AddOdontograma(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *OdontologiaOdontogramaController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description consultar un registro de la tabla OdontologiaOdontograma por su id
+// @Description consultar un registro de la tabla Odontograma por su id
 // @Param	id		path 	string	true		"Id a consultar"
-// @Success 200 {object} models.OdontologiaOdontograma
+// @Success 200 {object} models.Odontograma
 // @Failure 403 :id está vacío
 // @router /:id [get]
-func (c *OdontologiaOdontogramaController) GetOne() {
+func (c *OdontogramaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetOdontologiaOdontogramaById(id)
+	v, err := models.GetOdontogramaById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *OdontologiaOdontogramaController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description consulta todos los registros de la tabla OdontologiaOdontograma
+// @Description consulta todos los registros de la tabla Odontograma
 // @Param   query   consulta    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
 // @Param   fields  consulta    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
 // @Param   sortby  consulta    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
 // @Param   order   consulta    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
 // @Param   limit   consulta    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
 // @Param   offset  consulta    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
-// @Success 200 {object} models.OdontologiaOdontograma
+// @Success 200 {object} models.Odontograma
 // @Failure 403
 // @router / [get]
-func (c *OdontologiaOdontogramaController) GetAll() {
+func (c *OdontogramaController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -118,7 +118,7 @@ func (c *OdontologiaOdontogramaController) GetAll() {
 			query[k] = v
 		}
 	}
-	l, err := models.GetAllOdontologiaOdontograma(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllOdontograma(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -129,18 +129,18 @@ func (c *OdontologiaOdontogramaController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description actualizar un registro de la tabla OdontologiaOdontograma
+// @Description actualizar un registro de la tabla Odontograma
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.OdontologiaOdontograma	true		"Cuerpo para el contenido de OdontologiaOdontograma"
-// @Success 200 {object} models.OdontologiaOdontograma
+// @Param	body		body 	models.Odontograma	true		"Cuerpo para el contenido de Odontograma"
+// @Success 200 {object} models.Odontograma
 // @Failure 403 :id no es entero
 // @router /:id [put]
-func (c *OdontologiaOdontogramaController) Put() {
+func (c *OdontogramaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.OdontologiaOdontograma{IdOdontograma: id}
+	v := models.Odontograma{IdOdontograma: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateOdontologiaOdontograma(&v); err == nil {
+		if err := models.UpdateOdontograma(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -153,15 +153,15 @@ func (c *OdontologiaOdontogramaController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description elimina un registro de la tabla OdontologiaOdontograma
+// @Description elimina un registro de la tabla Odontograma
 // @Param	id		path 	string	true		"Id del registro a eliminar"
 // @Success 200 {string} borrado exitoso!
 // @Failure 403 Id vacío
 // @router /:id [delete]
-func (c *OdontologiaOdontogramaController) Delete() {
+func (c *OdontogramaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteOdontologiaOdontograma(id); err == nil {
+	if err := models.DeleteOdontograma(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

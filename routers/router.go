@@ -17,42 +17,42 @@ func init() {
 	ns := beego.NewNamespace("/v1",
 		beego.NSNamespace("/Anamnesis",
 			beego.NSInclude(
-				&controllers.OdontologiaAnamnesisController{},
+				&controllers.AnamnesisController{},
 			),
 		),
 		beego.NSNamespace("/ControlPlaca",
 			beego.NSInclude(
-				&controllers.OdontologiaControlPlacaController{},
+				&controllers.ControlPlacaController{},
 			),
 		),
 		beego.NSNamespace("/Diagnostico",
 			beego.NSInclude(
-				&controllers.OdontologiaDiagnosticoController{},
+				&controllers.DiagnosticoController{},
 			),
 		),
 		beego.NSNamespace("/ExamenDental",
 			beego.NSInclude(
-				&controllers.OdontologiaExamenDentalController{},
+				&controllers.ExamenDentalController{},
 			),
 		),
 		beego.NSNamespace("/ExamenesComplementarios",
 			beego.NSInclude(
-				&controllers.OdontologiaExamenesComplementariosController{},
+				&controllers.ExamenesComplementariosController{},
 			),
 		),
 		beego.NSNamespace("/ExamenEstomatologico",
 			beego.NSInclude(
-				&controllers.OdontologiaExamenEstomatologicoController{},
+				&controllers.ExamenEstomatologicoController{},
 			),
 		),
 		beego.NSNamespace("/Odontograma",
 			beego.NSInclude(
-				&controllers.OdontologiaOdontogramaController{},
+				&controllers.OdontogramaController{},
 			),
 		),
 		beego.NSNamespace("/TipoOdontograma",
 			beego.NSInclude(
-				&controllers.OdontologiaTipoOdontogramaController{},
+				&controllers.TipoOdontogramaController{},
 			),
 		),
 	)
