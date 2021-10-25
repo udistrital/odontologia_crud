@@ -15,14 +15,44 @@ import (
 
 func init() {
 	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/object",
+		beego.NSNamespace("/Anamnesis",
 			beego.NSInclude(
-				&controllers.ObjectController{},
+				&controllers.OdontologiaAnamnesisController{},
 			),
 		),
-		beego.NSNamespace("/user",
+		beego.NSNamespace("/ControlPlaca",
 			beego.NSInclude(
-				&controllers.UserController{},
+				&controllers.OdontologiaControlPlacaController{},
+			),
+		),
+		beego.NSNamespace("/Diagnostico",
+			beego.NSInclude(
+				&controllers.OdontologiaDiagnosticoController{},
+			),
+		),
+		beego.NSNamespace("/ExamenDental",
+			beego.NSInclude(
+				&controllers.OdontologiaExamenDentalController{},
+			),
+		),
+		beego.NSNamespace("/ExamenesComplementarios",
+			beego.NSInclude(
+				&controllers.OdontologiaExamenesComplementariosController{},
+			),
+		),
+		beego.NSNamespace("/ExamenEstomatologico",
+			beego.NSInclude(
+				&controllers.OdontologiaExamenEstomatologicoController{},
+			),
+		),
+		beego.NSNamespace("/Odontograma",
+			beego.NSInclude(
+				&controllers.OdontologiaOdontogramaController{},
+			),
+		),
+		beego.NSNamespace("/TipoOdontograma",
+			beego.NSInclude(
+				&controllers.OdontologiaTipoOdontogramaController{},
 			),
 		),
 	)

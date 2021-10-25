@@ -11,254 +11,1157 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 basePath: /v1
 paths:
-  /object/:
+  /Anamnesis/:
     get:
       tags:
-      - object
-      description: get all objects
-      operationId: ObjectController.GetAll
+      - Anamnesis
+      description: consulta todos los registros de la tabla OdontologiaAnamnesis
+      operationId: OdontologiaAnamnesisController.Get All
+      parameters:
+      - in: consulta
+        name: query
+        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
+        type: string
+      - in: consulta
+        name: fields
+        description: Campos devueltos. Por ejemplo, col1, col2 ...
+        type: string
+      - in: consulta
+        name: sortby
+        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
+        type: string
+      - in: consulta
+        name: order
+        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
+        type: string
+      - in: consulta
+        name: limit
+        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
+        type: string
+      - in: consulta
+        name: offset
+        description: Posición inicial del conjunto de resultados. Debe ser un número entero
+        type: string
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Object'
+            $ref: '#/definitions/models.OdontologiaAnamnesis'
         "403":
-          description: :objectId is empty
+          description: ""
     post:
       tags:
-      - object
-      description: create object
-      operationId: ObjectController.Create
+      - Anamnesis
+      description: agregar un registro en la tabla OdontologiaAnamnesis
+      operationId: OdontologiaAnamnesisController.Post
       parameters:
       - in: body
         name: body
-        description: The object content
+        description: Cuerpo para el contenido de OdontologiaAnamnesis
         required: true
         schema:
-          $ref: '#/definitions/models.Object'
+          $ref: '#/definitions/models.OdontologiaAnamnesis'
       responses:
-        "200":
-          description: '{string} models.Object.Id'
+        "201":
+          description: '{int} models.OdontologiaAnamnesis'
         "403":
-          description: body is empty
-  /object/{objectId}:
+          description: Cuerpo Vacío
+  /Anamnesis/{id}:
     get:
       tags:
-      - object
-      description: find object by objectid
-      operationId: ObjectController.Get
+      - Anamnesis
+      description: consultar un registro de la tabla OdontologiaAnamnesis por su id
+      operationId: OdontologiaAnamnesisController.Get One
       parameters:
       - in: path
-        name: objectId
-        description: the objectid you want to get
+        name: id
+        description: Id a consultar
         required: true
         type: string
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Object'
+            $ref: '#/definitions/models.OdontologiaAnamnesis'
         "403":
-          description: :objectId is empty
+          description: :id está vacío
     put:
       tags:
-      - object
-      description: update the object
-      operationId: ObjectController.Update
+      - Anamnesis
+      description: actualizar un registro de la tabla OdontologiaAnamnesis
+      operationId: OdontologiaAnamnesisController.Put
       parameters:
       - in: path
-        name: objectId
-        description: The objectid you want to update
+        name: id
+        description: Id del registro a actualizar
         required: true
         type: string
       - in: body
         name: body
-        description: The body
+        description: Cuerpo para el contenido de OdontologiaAnamnesis
         required: true
         schema:
-          $ref: '#/definitions/models.Object'
+          $ref: '#/definitions/models.OdontologiaAnamnesis'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Object'
+            $ref: '#/definitions/models.OdontologiaAnamnesis'
         "403":
-          description: :objectId is empty
+          description: :id no es entero
     delete:
       tags:
-      - object
-      description: delete the object
-      operationId: ObjectController.Delete
+      - Anamnesis
+      description: elimina un registro de la tabla OdontologiaAnamnesis
+      operationId: OdontologiaAnamnesisController.Delete
       parameters:
       - in: path
-        name: objectId
-        description: The objectId you want to delete
+        name: id
+        description: Id del registro a eliminar
         required: true
         type: string
       responses:
         "200":
-          description: '{string} delete success!'
+          description: '{string} borrado exitoso!'
         "403":
-          description: objectId is empty
-  /user/:
+          description: Id vacío
+  /ControlPlaca/:
     get:
       tags:
-      - user
-      description: get all Users
-      operationId: UserController.GetAll
+      - ControlPlaca
+      description: consulta todos los registros de la tabla OdontologiaControlPlaca
+      operationId: OdontologiaControlPlacaController.Get All
+      parameters:
+      - in: consulta
+        name: query
+        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
+        type: string
+      - in: consulta
+        name: fields
+        description: Campos devueltos. Por ejemplo, col1, col2 ...
+        type: string
+      - in: consulta
+        name: sortby
+        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
+        type: string
+      - in: consulta
+        name: order
+        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
+        type: string
+      - in: consulta
+        name: limit
+        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
+        type: string
+      - in: consulta
+        name: offset
+        description: Posición inicial del conjunto de resultados. Debe ser un número entero
+        type: string
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.User'
+            $ref: '#/definitions/models.OdontologiaControlPlaca'
+        "403":
+          description: ""
     post:
       tags:
-      - user
-      description: create users
-      operationId: UserController.CreateUser
+      - ControlPlaca
+      description: agregar un registro en la tabla OdontologiaControlPlaca
+      operationId: OdontologiaControlPlacaController.Post
       parameters:
       - in: body
         name: body
-        description: body for user content
+        description: Cuerpo para el contenido de OdontologiaControlPlaca
         required: true
         schema:
-          $ref: '#/definitions/models.User'
+          $ref: '#/definitions/models.OdontologiaControlPlaca'
       responses:
-        "200":
-          description: '{int} models.User.Id'
+        "201":
+          description: '{int} models.OdontologiaControlPlaca'
         "403":
-          description: body is empty
-  /user/{uid}:
+          description: Cuerpo Vacío
+  /ControlPlaca/{id}:
     get:
       tags:
-      - user
-      description: get user by uid
-      operationId: UserController.Get
+      - ControlPlaca
+      description: consultar un registro de la tabla OdontologiaControlPlaca por su id
+      operationId: OdontologiaControlPlacaController.Get One
       parameters:
       - in: path
-        name: uid
-        description: The key for staticblock
+        name: id
+        description: Id a consultar
         required: true
         type: string
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.User'
+            $ref: '#/definitions/models.OdontologiaControlPlaca'
         "403":
-          description: :uid is empty
+          description: :id está vacío
     put:
       tags:
-      - user
-      description: update the user
-      operationId: UserController.Update
+      - ControlPlaca
+      description: actualizar un registro de la tabla OdontologiaControlPlaca
+      operationId: OdontologiaControlPlacaController.Put
       parameters:
       - in: path
-        name: uid
-        description: The uid you want to update
+        name: id
+        description: Id del registro a actualizar
         required: true
         type: string
       - in: body
         name: body
-        description: body for user content
+        description: Cuerpo para el contenido de OdontologiaControlPlaca
         required: true
         schema:
-          $ref: '#/definitions/models.User'
+          $ref: '#/definitions/models.OdontologiaControlPlaca'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.User'
+            $ref: '#/definitions/models.OdontologiaControlPlaca'
         "403":
-          description: :uid is not int
+          description: :id no es entero
     delete:
       tags:
-      - user
-      description: delete the user
-      operationId: UserController.Delete
+      - ControlPlaca
+      description: elimina un registro de la tabla OdontologiaControlPlaca
+      operationId: OdontologiaControlPlacaController.Delete
       parameters:
       - in: path
-        name: uid
-        description: The uid you want to delete
+        name: id
+        description: Id del registro a eliminar
         required: true
         type: string
       responses:
         "200":
-          description: '{string} delete success!'
+          description: '{string} borrado exitoso!'
         "403":
-          description: uid is empty
-  /user/login:
+          description: Id vacío
+  /Diagnostico/:
     get:
       tags:
-      - user
-      description: Logs user into the system
-      operationId: UserController.Login
+      - Diagnostico
+      description: consulta todos los registros de la tabla OdontologiaDiagnostico
+      operationId: OdontologiaDiagnosticoController.Get All
       parameters:
-      - in: query
-        name: username
-        description: The username for login
-        required: true
+      - in: consulta
+        name: query
+        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: query
-        name: password
-        description: The password for login
-        required: true
+      - in: consulta
+        name: fields
+        description: Campos devueltos. Por ejemplo, col1, col2 ...
+        type: string
+      - in: consulta
+        name: sortby
+        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
+        type: string
+      - in: consulta
+        name: order
+        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
+        type: string
+      - in: consulta
+        name: limit
+        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
+        type: string
+      - in: consulta
+        name: offset
+        description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
       responses:
         "200":
-          description: '{string} login success'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaDiagnostico'
         "403":
-          description: user not exist
-  /user/logout:
+          description: ""
+    post:
+      tags:
+      - Diagnostico
+      description: agregar un registro en la tabla OdontologiaDiagnostico
+      operationId: OdontologiaDiagnosticoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaDiagnostico
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaDiagnostico'
+      responses:
+        "201":
+          description: '{int} models.OdontologiaDiagnostico'
+        "403":
+          description: Cuerpo Vacío
+  /Diagnostico/{id}:
     get:
       tags:
-      - user
-      description: Logs out current logged in user session
-      operationId: UserController.logout
+      - Diagnostico
+      description: consultar un registro de la tabla OdontologiaDiagnostico por su id
+      operationId: OdontologiaDiagnosticoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: Id a consultar
+        required: true
+        type: string
       responses:
         "200":
-          description: '{string} logout success'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaDiagnostico'
+        "403":
+          description: :id está vacío
+    put:
+      tags:
+      - Diagnostico
+      description: actualizar un registro de la tabla OdontologiaDiagnostico
+      operationId: OdontologiaDiagnosticoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a actualizar
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaDiagnostico
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaDiagnostico'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaDiagnostico'
+        "403":
+          description: :id no es entero
+    delete:
+      tags:
+      - Diagnostico
+      description: elimina un registro de la tabla OdontologiaDiagnostico
+      operationId: OdontologiaDiagnosticoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a eliminar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} borrado exitoso!'
+        "403":
+          description: Id vacío
+  /ExamenDental/:
+    get:
+      tags:
+      - ExamenDental
+      description: consulta todos los registros de la tabla OdontologiaExamenDental
+      operationId: OdontologiaExamenDentalController.Get All
+      parameters:
+      - in: consulta
+        name: query
+        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
+        type: string
+      - in: consulta
+        name: fields
+        description: Campos devueltos. Por ejemplo, col1, col2 ...
+        type: string
+      - in: consulta
+        name: sortby
+        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
+        type: string
+      - in: consulta
+        name: order
+        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
+        type: string
+      - in: consulta
+        name: limit
+        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
+        type: string
+      - in: consulta
+        name: offset
+        description: Posición inicial del conjunto de resultados. Debe ser un número entero
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaExamenDental'
+        "403":
+          description: ""
+    post:
+      tags:
+      - ExamenDental
+      description: agregar un registro en la tabla OdontologiaExamenDental
+      operationId: OdontologiaExamenDentalController.Post
+      parameters:
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaExamenDental
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaExamenDental'
+      responses:
+        "201":
+          description: '{int} models.OdontologiaExamenDental'
+        "403":
+          description: Cuerpo Vacío
+  /ExamenDental/{id}:
+    get:
+      tags:
+      - ExamenDental
+      description: consultar un registro de la tabla OdontologiaExamenDental por su id
+      operationId: OdontologiaExamenDentalController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: Id a consultar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaExamenDental'
+        "403":
+          description: :id está vacío
+    put:
+      tags:
+      - ExamenDental
+      description: actualizar un registro de la tabla OdontologiaExamenDental
+      operationId: OdontologiaExamenDentalController.Put
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a actualizar
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaExamenDental
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaExamenDental'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaExamenDental'
+        "403":
+          description: :id no es entero
+    delete:
+      tags:
+      - ExamenDental
+      description: elimina un registro de la tabla OdontologiaExamenDental
+      operationId: OdontologiaExamenDentalController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a eliminar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} borrado exitoso!'
+        "403":
+          description: Id vacío
+  /ExamenEstomatologico/:
+    get:
+      tags:
+      - ExamenEstomatologico
+      description: consulta todos los registros de la tabla OdontologiaExamenEstomatologico
+      operationId: OdontologiaExamenEstomatologicoController.Get All
+      parameters:
+      - in: consulta
+        name: query
+        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
+        type: string
+      - in: consulta
+        name: fields
+        description: Campos devueltos. Por ejemplo, col1, col2 ...
+        type: string
+      - in: consulta
+        name: sortby
+        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
+        type: string
+      - in: consulta
+        name: order
+        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
+        type: string
+      - in: consulta
+        name: limit
+        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
+        type: string
+      - in: consulta
+        name: offset
+        description: Posición inicial del conjunto de resultados. Debe ser un número entero
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaExamenEstomatologico'
+        "403":
+          description: ""
+    post:
+      tags:
+      - ExamenEstomatologico
+      description: agregar un registro en la tabla OdontologiaExamenEstomatologico
+      operationId: OdontologiaExamenEstomatologicoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaExamenEstomatologico
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaExamenEstomatologico'
+      responses:
+        "201":
+          description: '{int} models.OdontologiaExamenEstomatologico'
+        "403":
+          description: Cuerpo Vacío
+  /ExamenEstomatologico/{id}:
+    get:
+      tags:
+      - ExamenEstomatologico
+      description: consultar un registro de la tabla OdontologiaExamenEstomatologico por su id
+      operationId: OdontologiaExamenEstomatologicoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: Id a consultar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaExamenEstomatologico'
+        "403":
+          description: :id está vacío
+    put:
+      tags:
+      - ExamenEstomatologico
+      description: actualizar un registro de la tabla OdontologiaExamenEstomatologico
+      operationId: OdontologiaExamenEstomatologicoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a actualizar
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaExamenEstomatologico
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaExamenEstomatologico'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaExamenEstomatologico'
+        "403":
+          description: :id no es entero
+    delete:
+      tags:
+      - ExamenEstomatologico
+      description: elimina un registro de la tabla OdontologiaExamenEstomatologico
+      operationId: OdontologiaExamenEstomatologicoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a eliminar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} borrado exitoso!'
+        "403":
+          description: Id vacío
+  /ExamenesComplementarios/:
+    get:
+      tags:
+      - ExamenesComplementarios
+      description: consulta todos los registros de la tabla OdontologiaExamenesComplementarios
+      operationId: OdontologiaExamenesComplementariosController.Get All
+      parameters:
+      - in: consulta
+        name: query
+        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
+        type: string
+      - in: consulta
+        name: fields
+        description: Campos devueltos. Por ejemplo, col1, col2 ...
+        type: string
+      - in: consulta
+        name: sortby
+        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
+        type: string
+      - in: consulta
+        name: order
+        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
+        type: string
+      - in: consulta
+        name: limit
+        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
+        type: string
+      - in: consulta
+        name: offset
+        description: Posición inicial del conjunto de resultados. Debe ser un número entero
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaExamenesComplementarios'
+        "403":
+          description: ""
+    post:
+      tags:
+      - ExamenesComplementarios
+      description: agregar un registro en la tabla OdontologiaExamenesComplementarios
+      operationId: OdontologiaExamenesComplementariosController.Post
+      parameters:
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaExamenesComplementarios
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaExamenesComplementarios'
+      responses:
+        "201":
+          description: '{int} models.OdontologiaExamenesComplementarios'
+        "403":
+          description: Cuerpo Vacío
+  /ExamenesComplementarios/{id}:
+    get:
+      tags:
+      - ExamenesComplementarios
+      description: consultar un registro de la tabla OdontologiaExamenesComplementarios por su id
+      operationId: OdontologiaExamenesComplementariosController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: Id a consultar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaExamenesComplementarios'
+        "403":
+          description: :id está vacío
+    put:
+      tags:
+      - ExamenesComplementarios
+      description: actualizar un registro de la tabla OdontologiaExamenesComplementarios
+      operationId: OdontologiaExamenesComplementariosController.Put
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a actualizar
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaExamenesComplementarios
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaExamenesComplementarios'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaExamenesComplementarios'
+        "403":
+          description: :id no es entero
+    delete:
+      tags:
+      - ExamenesComplementarios
+      description: elimina un registro de la tabla OdontologiaExamenesComplementarios
+      operationId: OdontologiaExamenesComplementariosController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a eliminar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} borrado exitoso!'
+        "403":
+          description: Id vacío
+  /Odontograma/:
+    get:
+      tags:
+      - Odontograma
+      description: consulta todos los registros de la tabla OdontologiaOdontograma
+      operationId: OdontologiaOdontogramaController.Get All
+      parameters:
+      - in: consulta
+        name: query
+        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
+        type: string
+      - in: consulta
+        name: fields
+        description: Campos devueltos. Por ejemplo, col1, col2 ...
+        type: string
+      - in: consulta
+        name: sortby
+        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
+        type: string
+      - in: consulta
+        name: order
+        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
+        type: string
+      - in: consulta
+        name: limit
+        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
+        type: string
+      - in: consulta
+        name: offset
+        description: Posición inicial del conjunto de resultados. Debe ser un número entero
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaOdontograma'
+        "403":
+          description: ""
+    post:
+      tags:
+      - Odontograma
+      description: agregar un registro en la tabla OdontologiaOdontograma
+      operationId: OdontologiaOdontogramaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaOdontograma
+        required: true
+        schema:
+          $ref: '#/definitions/models.AccesoHOdontologiaOdontogramaistoriaClinica'
+      responses:
+        "201":
+          description: '{int} models.OdontologiaOdontograma'
+        "403":
+          description: Cuerpo Vacío
+  /Odontograma/{id}:
+    get:
+      tags:
+      - Odontograma
+      description: consultar un registro de la tabla OdontologiaOdontograma por su id
+      operationId: OdontologiaOdontogramaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: Id a consultar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaOdontograma'
+        "403":
+          description: :id está vacío
+    put:
+      tags:
+      - Odontograma
+      description: actualizar un registro de la tabla OdontologiaOdontograma
+      operationId: OdontologiaOdontogramaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a actualizar
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaOdontograma
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaOdontograma'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaOdontograma'
+        "403":
+          description: :id no es entero
+    delete:
+      tags:
+      - Odontograma
+      description: elimina un registro de la tabla OdontologiaOdontograma
+      operationId: OdontologiaOdontogramaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a eliminar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} borrado exitoso!'
+        "403":
+          description: Id vacío
+  /TipoOdontograma/:
+    get:
+      tags:
+      - TipoOdontograma
+      description: consulta todos los registros de la tabla OdontologiaTipoOdontograma
+      operationId: OdontologiaTipoOdontogramaController.Get All
+      parameters:
+      - in: consulta
+        name: query
+        description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
+        type: string
+      - in: consulta
+        name: fields
+        description: Campos devueltos. Por ejemplo, col1, col2 ...
+        type: string
+      - in: consulta
+        name: sortby
+        description: Campos ordenados por. Por ejemplo, Col1, col2 ...
+        type: string
+      - in: consulta
+        name: order
+        description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
+        type: string
+      - in: consulta
+        name: limit
+        description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
+        type: string
+      - in: consulta
+        name: offset
+        description: Posición inicial del conjunto de resultados. Debe ser un número entero
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+        "403":
+          description: ""
+    post:
+      tags:
+      - TipoOdontograma
+      description: agregar un registro en la tabla OdontologiaTipoOdontograma
+      operationId: OdontologiaTipoOdontogramaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de OdontologiaTipoOdontograma
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+      responses:
+        "201":
+          description: '{int} models.OdontologiaTipoOdontograma'
+        "403":
+          description: Cuerpo Vacío
+  /TipoOdontograma/{id}:
+    get:
+      tags:
+      - TipoOdontograma
+      description: consultar un registro de la tabla OdontologiaTipoOdontograma por su id
+      operationId: OdontologiaTipoOdontogramaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: Id a consultar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+        "403":
+          description: :id está vacío
+    put:
+      tags:
+      - TipoOdontograma
+      description: actualizar un registro de la tabla OdontologiaTipoOdontograma
+      operationId: OdontologiaTipoOdontogramaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a actualizar
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Cuerpo para el contenido de AccesoHistoriaClinica
+        required: true
+        schema:
+          $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+        "403":
+          description: :id no es entero
+    delete:
+      tags:
+      - TipoOdontograma
+      description: elimina un registro de la tabla OdontologiaTipoOdontograma
+      operationId: OdontologiaTipoOdontogramaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: Id del registro a eliminar
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} borrado exitoso!'
+        "403":
+          description: Id vacío
 definitions:
-  models.Object:
-    title: Object
+  models.AccesoHOdontologiaOdontogramaistoriaClinica:
+    title: AccesoHOdontologiaOdontogramaistoriaClinica
+    type: object
+  models.MedicinaHistoriaClinica:
+    title: MedicinaHistoriaClinica
+    type: object
+  models.MedicinaHojaHistoria:
+    title: MedicinaHojaHistoria
+    type: object
+  models.OdontologiaAnamnesis:
+    title: OdontologiaAnamnesis
     type: object
     properties:
-      ObjectId:
+      Alergias:
         type: string
-      PlayerName:
+      AntecedenteFamiliar:
         type: string
-      Score:
+      Cardiopatias:
+        type: string
+      Ceda:
+        type: string
+      Cepillado:
+        type: string
+      Chicle:
+        type: string
+      Diabetes:
+        type: string
+      Dulces:
+        type: string
+      EnfermedadRespiratoria:
+        type: string
+      Enjuague:
+        type: string
+      FiebreReumatica:
+        type: string
+      Fuma:
+        type: string
+      Hemorragias:
+        type: string
+      Hepatitis:
+        type: string
+      Hipertension:
+        type: string
+      IdHistoriaClinica:
+        $ref: '#/definitions/models.MedicinaHistoriaClinica'
+      IdOdontologiaAnamnesis:
         type: integer
         format: int64
-  models.Profile:
-    title: Profile
+      Irradiaciones:
+        type: string
+      Medicamentos:
+        type: string
+      Otras:
+        type: string
+      Sinusitis:
+        type: string
+      Tratamiento:
+        type: string
+      UltimaVisita:
+        type: string
+        format: datetime
+  models.OdontologiaControlPlaca:
+    title: OdontologiaControlPlaca
     type: object
     properties:
-      Address:
+      Fecha:
         type: string
-      Age:
+        format: datetime
+      IdHojaHistoria:
+        $ref: '#/definitions/models.MedicinaHojaHistoria'
+      IdTipoOdontograma:
+        $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+      IdcontrolPlaca:
         type: integer
         format: int64
-      Email:
+      IndiceActual:
+        type: integer
+        format: int64
+      IndiceAnterior:
+        type: integer
+        format: int64
+      Observaciones:
         type: string
-      Gender:
+      Vestibulares:
         type: string
-  models.User:
-    title: User
+  models.OdontologiaDiagnostico:
+    title: OdontologiaDiagnostico
     type: object
     properties:
-      Id:
+      Diagnostivo:
         type: string
-      Password:
+      Evolucion:
         type: string
-      Profile:
-        $ref: '#/definitions/models.Profile'
-      Username:
+      IdDiagnostico:
+        type: integer
+        format: int64
+      IdHojaHistoria:
+        $ref: '#/definitions/models.MedicinaHojaHistoria'
+      Observaciones:
         type: string
-tags:
-- name: object
-  description: |
-    Operations about object
-- name: user
-  description: |
-    Operations about Users
+      Pronostico:
+        type: string
+  models.OdontologiaExamenDental:
+    title: OdontologiaExamenDental
+    type: object
+    properties:
+      Abrasion:
+        type: string
+      IdExamenDental:
+        type: integer
+        format: int64
+      IdHojaHistoria:
+        $ref: '#/definitions/models.MedicinaHojaHistoria'
+      Manchas:
+        type: string
+      Observaciones:
+        type: string
+      Oclusion:
+        type: string
+      Otros:
+        type: string
+      PatologiaPulpar:
+        type: string
+      PlacaBlanda:
+        type: string
+      PlacaCalcificada:
+        type: string
+      Supernumerarios:
+        type: string
+  models.OdontologiaExamenEstomatologico:
+    title: OdontologiaExamenEstomatologico
+    type: object
+    properties:
+      ArticulacionTemporo:
+        type: string
+      Carrillos:
+        type: string
+      GlandulasSalivares:
+        type: string
+      IdExamenEstomatologico:
+        type: integer
+        format: int64
+      IdHojaHistoria:
+        $ref: '#/definitions/models.MedicinaHojaHistoria'
+      Labios:
+        type: string
+      Lengua:
+        type: string
+      Maxilares:
+        type: string
+      MusculosMasticadores:
+        type: string
+      Observaciones:
+        type: string
+      Paladar:
+        type: string
+      PisoBoca:
+        type: string
+      SenosMaxilares:
+        type: string
+      SistemaLinfatico:
+        type: string
+      SistemaMuscular:
+        type: string
+      SistemaNervioso:
+        type: string
+      SistemaRegional:
+        type: string
+  models.OdontologiaExamenesComplementarios:
+    title: OdontologiaExamenesComplementarios
+    type: object
+    properties:
+      Coagulacion:
+        type: string
+      IdExamenesComplementarios:
+        type: integer
+        format: int64
+      IdHojaHistoria:
+        type: integer
+        format: int64
+      LaboratorioFinal:
+        type: integer
+        format: int64
+      LaboratorioInicio:
+        type: integer
+        format: int64
+      Otra:
+        type: string
+      OtraFinal:
+        type: integer
+        format: int64
+      OtraInicio:
+        type: integer
+        format: int64
+      PanoramicaInicio:
+        type: integer
+        format: int64
+      PeriapicalFinal:
+        type: integer
+        format: int64
+      PeriapicalInicio:
+        type: integer
+        format: int64
+      Sangria:
+        type: string
+      Tp:
+        type: string
+      Tpt:
+        type: string
+  models.OdontologiaOdontograma:
+    title: OdontologiaOdontograma
+    type: object
+    properties:
+      Diagrama:
+        type: string
+      IdHojaHistoria:
+        $ref: '#/definitions/models.MedicinaHojaHistoria'
+      IdOdontograma:
+        type: integer
+        format: int64
+      IdTipoOdontograma:
+        $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+      Observaciones:
+        type: string
+  models.OdontologiaTipoOdontograma:
+    title: OdontologiaTipoOdontograma
+    type: object
+    properties:
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      IdTipoOdontograma:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
