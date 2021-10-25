@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type OdontologiaExamenEstomatologico struct {
+type ExamenEstomatologico struct {
 	IdExamenEstomatologico int                   `orm:"column(id_examen_estomatologico);pk;auto"`
 	Observaciones          string                `orm:"column(observaciones);null"`
 	IdHojaHistoria         *MedicinaHojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
@@ -29,38 +29,38 @@ type OdontologiaExamenEstomatologico struct {
 	SistemaRegional        string                `orm:"column(sistema_regional);null"`
 }
 
-func (t *OdontologiaExamenEstomatologico) TableName() string {
+func (t *ExamenEstomatologico) TableName() string {
 	return "examenestomatologico"
 }
 func init() {
-	orm.RegisterModel(new(OdontologiaExamenEstomatologico))
+	orm.RegisterModel(new(ExamenEstomatologico))
 }
 
-// AddOdontologiaExamenEstomatologico inserta un registro en la tabla examenestomatologico
+// AddExamenEstomatologico inserta un registro en la tabla examenestomatologico
 // Último registro insertado con éxito
-func AddOdontologiaExamenEstomatologico(m *OdontologiaExamenEstomatologico) (id int64, err error) {
+func AddExamenEstomatologico(m *ExamenEstomatologico) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetOdontologiaExamenEstomatologicoById obtiene un registro de la tabla examenestomatologico por su id
+// GetExamenEstomatologicoById obtiene un registro de la tabla examenestomatologico por su id
 // Id no existe
-func GetOdontologiaExamenEstomatologicoById(id int) (v *OdontologiaExamenEstomatologico, err error) {
+func GetExamenEstomatologicoById(id int) (v *ExamenEstomatologico, err error) {
 	o := orm.NewOrm()
-	v = &OdontologiaExamenEstomatologico{IdExamenEstomatologico: id}
+	v = &ExamenEstomatologico{IdExamenEstomatologico: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllOdontologiaExamenEstomatologico obtiene todos los registros de la tabla examenestomatologico
+// GetAllExamenEstomatologico obtiene todos los registros de la tabla examenestomatologico
 // No existen registros
-func GetAllOdontologiaExamenEstomatologico(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllExamenEstomatologico(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(OdontologiaExamenEstomatologico))
+	qs := o.QueryTable(new(ExamenEstomatologico))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -104,7 +104,7 @@ func GetAllOdontologiaExamenEstomatologico(query map[string]string, fields []str
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []OdontologiaExamenEstomatologico
+	var l []ExamenEstomatologico
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -126,11 +126,11 @@ func GetAllOdontologiaExamenEstomatologico(query map[string]string, fields []str
 	return nil, err
 }
 
-// UpdateOdontologiaExamenEstomatologico actualiza un registro de la tabla examenestomatologico
+// UpdateExamenEstomatologico actualiza un registro de la tabla examenestomatologico
 // El registro a actualizar no existe
-func UpdateOdontologiaExamenEstomatologico(m *OdontologiaExamenEstomatologico) (err error) {
+func UpdateExamenEstomatologico(m *ExamenEstomatologico) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaExamenEstomatologico{IdExamenEstomatologico: m.IdExamenEstomatologico}
+	v := ExamenEstomatologico{IdExamenEstomatologico: m.IdExamenEstomatologico}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -140,14 +140,14 @@ func UpdateOdontologiaExamenEstomatologico(m *OdontologiaExamenEstomatologico) (
 	return
 }
 
-// DeleteOdontologiaExamenEstomatologico elimina un registro de la tabla examenestomatologico
+// DeleteExamenEstomatologico elimina un registro de la tabla examenestomatologico
 // El registro a eliminar no existe
-func DeleteOdontologiaExamenEstomatologico(id int) (err error) {
+func DeleteExamenEstomatologico(id int) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaExamenEstomatologico{IdExamenEstomatologico: id}
+	v := ExamenEstomatologico{IdExamenEstomatologico: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&OdontologiaExamenEstomatologico{IdExamenEstomatologico: id}); err == nil {
+		if num, err = o.Delete(&ExamenEstomatologico{IdExamenEstomatologico: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

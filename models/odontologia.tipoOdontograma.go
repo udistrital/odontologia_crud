@@ -10,7 +10,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type OdontologiaTipoOdontograma struct {
+type TipoOdontograma struct {
 	IdTipoOdontograma int       `orm:"column(id_tipo_odontograma);pk;auto"`
 	Nombre            string    `orm:"column(nombre);null"`
 	Descripcion       string    `orm:"column(descripcion);null"`
@@ -18,38 +18,38 @@ type OdontologiaTipoOdontograma struct {
 	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(date);null"`
 }
 
-func (p *OdontologiaTipoOdontograma) TableName() string {
+func (p *TipoOdontograma) TableName() string {
 	return "tipoodontograma"
 }
 func init() {
-	orm.RegisterModel(new(OdontologiaTipoOdontograma))
+	orm.RegisterModel(new(TipoOdontograma))
 }
 
-// AddOdontologiaTipoOdontograma inserta un registro en la tabla tipoodontograma
+// AddTipoOdontograma inserta un registro en la tabla tipoodontograma
 // Último registro insertado con éxito
-func AddOdontologiaTipoOdontograma(m *OdontologiaTipoOdontograma) (id int64, err error) {
+func AddTipoOdontograma(m *TipoOdontograma) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetOdontologiaTipoOdontogramaById obtiene un registro de la tabla tipoodontograma por su id
+// GetTipoOdontogramaById obtiene un registro de la tabla tipoodontograma por su id
 // Id no existe
-func GetOdontologiaTipoOdontogramaById(id int) (v *OdontologiaTipoOdontograma, err error) {
+func GetTipoOdontogramaById(id int) (v *TipoOdontograma, err error) {
 	o := orm.NewOrm()
-	v = &OdontologiaTipoOdontograma{IdTipoOdontograma: id}
+	v = &TipoOdontograma{IdTipoOdontograma: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllOdontologiaTipoOdontograma obtiene todos los registros de la tabla tipoodontograma
+// GetAllTipoOdontograma obtiene todos los registros de la tabla tipoodontograma
 // No existen registros
-func GetAllOdontologiaTipoOdontograma(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTipoOdontograma(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(OdontologiaTipoOdontograma))
+	qs := o.QueryTable(new(TipoOdontograma))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -93,7 +93,7 @@ func GetAllOdontologiaTipoOdontograma(query map[string]string, fields []string, 
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []OdontologiaTipoOdontograma
+	var l []TipoOdontograma
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -115,11 +115,11 @@ func GetAllOdontologiaTipoOdontograma(query map[string]string, fields []string, 
 	return nil, err
 }
 
-// UpdateOdontologiaTipoOdontograma actualiza un registro de la tabla tipoodontograma
+// UpdateTipoOdontograma actualiza un registro de la tabla tipoodontograma
 // El registro a actualizar no existe
-func UpdateOdontologiaTipoOdontograma(m *OdontologiaTipoOdontograma) (err error) {
+func UpdateTipoOdontograma(m *TipoOdontograma) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaTipoOdontograma{IdTipoOdontograma: m.IdTipoOdontograma}
+	v := TipoOdontograma{IdTipoOdontograma: m.IdTipoOdontograma}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -129,14 +129,14 @@ func UpdateOdontologiaTipoOdontograma(m *OdontologiaTipoOdontograma) (err error)
 	return
 }
 
-// DeleteOdontologiaTipoOdontograma elimina un registro de la tabla tipoodontograma
+// DeleteTipoOdontograma elimina un registro de la tabla tipoodontograma
 // El registro a eliminar no existe
-func DeleteOdontologiaTipoOdontograma(id int) (err error) {
+func DeleteTipoOdontograma(id int) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaTipoOdontograma{IdTipoOdontograma: id}
+	v := TipoOdontograma{IdTipoOdontograma: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&OdontologiaTipoOdontograma{IdTipoOdontograma: id}); err == nil {
+		if num, err = o.Delete(&TipoOdontograma{IdTipoOdontograma: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

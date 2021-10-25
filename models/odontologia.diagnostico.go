@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type OdontologiaDiagnostico struct {
+type Diagnostico struct {
 	IdDiagnostico  int                   `orm:"column(id_diagnostico);pk;auto"`
 	Diagnostivo    string                `orm:"column(diagnostivo);null"`
 	Pronostico     string                `orm:"column(pronostico);null"`
@@ -18,38 +18,38 @@ type OdontologiaDiagnostico struct {
 	IdHojaHistoria *MedicinaHojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
 }
 
-func (t *OdontologiaDiagnostico) TableName() string {
+func (t *Diagnostico) TableName() string {
 	return "diagnosticoodontologia"
 }
 func init() {
-	orm.RegisterModel(new(OdontologiaDiagnostico))
+	orm.RegisterModel(new(Diagnostico))
 }
 
-// AddOdontologiaDiagnostico inserta un registro en la tabla diagnosticoodontologia
+// AddDiagnostico inserta un registro en la tabla diagnosticoodontologia
 // Último registro insertado con éxito
-func AddOdontologiaDiagnostico(m *OdontologiaDiagnostico) (id int64, err error) {
+func AddDiagnostico(m *Diagnostico) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetOdontologiaDiagnosticoById obtiene un registro de la tabla diagnosticoodontologia por su id
+// GetDiagnosticoById obtiene un registro de la tabla diagnosticoodontologia por su id
 // Id no existe
-func GetOdontologiaDiagnosticoById(id int) (v *OdontologiaDiagnostico, err error) {
+func GetDiagnosticoById(id int) (v *Diagnostico, err error) {
 	o := orm.NewOrm()
-	v = &OdontologiaDiagnostico{IdDiagnostico: id}
+	v = &Diagnostico{IdDiagnostico: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllOdontologiaDiagnostico obtiene todos los registros de la tabla diagnosticoodontologia
+// GetAllDiagnostico obtiene todos los registros de la tabla diagnosticoodontologia
 // No existen registros
-func GetAllOdontologiaDiagnostico(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllDiagnostico(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(OdontologiaDiagnostico))
+	qs := o.QueryTable(new(Diagnostico))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -93,7 +93,7 @@ func GetAllOdontologiaDiagnostico(query map[string]string, fields []string, sort
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []OdontologiaDiagnostico
+	var l []Diagnostico
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -115,11 +115,11 @@ func GetAllOdontologiaDiagnostico(query map[string]string, fields []string, sort
 	return nil, err
 }
 
-// UpdateOdontologiaDiagnostico actualiza un registro de la tabla diagnosticoodontologia
+// UpdateDiagnostico actualiza un registro de la tabla diagnosticoodontologia
 // El registro a actualizar no existe
-func UpdateOdontologiaDiagnostico(m *OdontologiaDiagnostico) (err error) {
+func UpdateDiagnostico(m *Diagnostico) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaDiagnostico{IdDiagnostico: m.IdDiagnostico}
+	v := Diagnostico{IdDiagnostico: m.IdDiagnostico}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -130,15 +130,15 @@ func UpdateOdontologiaDiagnostico(m *OdontologiaDiagnostico) (err error) {
 	return
 }
 
-// DeleteOdontologiaDiagnostico elimina un registro de la tabla diagnosticoodontologia
+// DeleteDiagnostico elimina un registro de la tabla diagnosticoodontologia
 // El registro a eliminar no existe
-func DeleteOdontologiaDiagnostico(id int) (err error) {
+func DeleteDiagnostico(id int) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaDiagnostico{IdDiagnostico: id}
+	v := Diagnostico{IdDiagnostico: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&OdontologiaDiagnostico{IdDiagnostico: id}); err == nil {
+		if num, err = o.Delete(&Diagnostico{IdDiagnostico: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

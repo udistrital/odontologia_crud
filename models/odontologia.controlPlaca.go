@@ -10,49 +10,49 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type OdontologiaControlPlaca struct {
-	IdcontrolPlaca    int                         `orm:"column(idcontrol_placa);pk;auto"`
-	IndiceAnterior    int                         `orm:"column(indice_anterior);null"`
-	IndiceActual      int                         `orm:"column(indice_actual);null"`
-	Fecha             time.Time                   `orm:"column(fecha);type(date);null"`
-	IdHojaHistoria    *MedicinaHojaHistoria       `orm:"column(id_hoja_historia);rel(fk);null"`
-	Vestibulares      string                      `orm:"column(vestibulares);null"`
-	Observaciones     string                      `orm:"column(observaciones);null"`
-	IdTipoOdontograma *OdontologiaTipoOdontograma `orm:"column(id_tipo_odontograma);rel(fk);null"`
+type ControlPlaca struct {
+	IdcontrolPlaca    int                   `orm:"column(idcontrol_placa);pk;auto"`
+	IndiceAnterior    int                   `orm:"column(indice_anterior);null"`
+	IndiceActual      int                   `orm:"column(indice_actual);null"`
+	Fecha             time.Time             `orm:"column(fecha);type(date);null"`
+	IdHojaHistoria    *MedicinaHojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
+	Vestibulares      string                `orm:"column(vestibulares);null"`
+	Observaciones     string                `orm:"column(observaciones);null"`
+	IdTipoOdontograma *TipoOdontograma      `orm:"column(id_tipo_odontograma);rel(fk);null"`
 }
 
-func (t *OdontologiaControlPlaca) TableName() string {
+func (t *ControlPlaca) TableName() string {
 	return "controlplaca"
 }
 func init() {
-	orm.RegisterModel(new(OdontologiaControlPlaca))
+	orm.RegisterModel(new(ControlPlaca))
 }
 
-// AddOdontologiaControlPlaca inserta un registro en la tabla controlplaca
+// AddControlPlaca inserta un registro en la tabla controlplaca
 // Último registro insertado con éxito
-func AddOdontologiaControlPlaca(m *OdontologiaControlPlaca) (id int64, err error) {
+func AddControlPlaca(m *ControlPlaca) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetOdontologiaControlPlacaById obtiene un registro de la tabla controlplaca por su id
+// GetControlPlacaById obtiene un registro de la tabla controlplaca por su id
 // Id no existe
-func GetOdontologiaControlPlacaById(id int) (v *OdontologiaControlPlaca, err error) {
+func GetControlPlacaById(id int) (v *ControlPlaca, err error) {
 	o := orm.NewOrm()
-	v = &OdontologiaControlPlaca{IdcontrolPlaca: id}
+	v = &ControlPlaca{IdcontrolPlaca: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllOdontologiaControlPlaca obtiene todos los registros de la tabla controlplaca
+// GetAllControlPlaca obtiene todos los registros de la tabla controlplaca
 // No existen registros
-func GetAllOdontologiaControlPlaca(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllControlPlaca(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(OdontologiaControlPlaca))
+	qs := o.QueryTable(new(ControlPlaca))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -96,7 +96,7 @@ func GetAllOdontologiaControlPlaca(query map[string]string, fields []string, sor
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []OdontologiaControlPlaca
+	var l []ControlPlaca
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -118,11 +118,11 @@ func GetAllOdontologiaControlPlaca(query map[string]string, fields []string, sor
 	return nil, err
 }
 
-// UpdateOdontologiaControlPlaca actualiza un registro de la tabla controlplaca
+// UpdateControlPlaca actualiza un registro de la tabla controlplaca
 // El registro a actualizar no existe
-func UpdateOdontologiaControlPlaca(m *OdontologiaControlPlaca) (err error) {
+func UpdateControlPlaca(m *ControlPlaca) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaControlPlaca{IdcontrolPlaca: m.IdcontrolPlaca}
+	v := ControlPlaca{IdcontrolPlaca: m.IdcontrolPlaca}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -133,15 +133,15 @@ func UpdateOdontologiaControlPlaca(m *OdontologiaControlPlaca) (err error) {
 	return
 }
 
-// DeleteOdontologiaControlPlaca elimina un registro de la tabla controlplaca
+// DeleteControlPlaca elimina un registro de la tabla controlplaca
 // El registro a eliminar no existe
-func DeleteOdontologiaControlPlaca(id int) (err error) {
+func DeleteControlPlaca(id int) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaControlPlaca{IdcontrolPlaca: id}
+	v := ControlPlaca{IdcontrolPlaca: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&OdontologiaControlPlaca{IdcontrolPlaca: id}); err == nil {
+		if num, err = o.Delete(&ControlPlaca{IdcontrolPlaca: id}); err == nil {
 			fmt.Println("Número de registros eliminados de la base de datos:", num)
 		}
 	}

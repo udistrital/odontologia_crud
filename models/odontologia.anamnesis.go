@@ -10,8 +10,8 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type OdontologiaAnamnesis struct {
-	IdOdontologiaAnamnesis int                      `orm:"column(id_anamnesis);pk;auto"`
+type Anamnesis struct {
+	IdAnamnesis            int                      `orm:"column(id_anamnesis);pk;auto"`
 	IdHistoriaClinica      *MedicinaHistoriaClinica `orm:"column(id_historia_clinica);rel(fk);null"`
 	Tratamiento            string                   `orm:"column(tratamiento);null"`
 	Medicamentos           string                   `orm:"column(medicamento);null"`
@@ -36,38 +36,38 @@ type OdontologiaAnamnesis struct {
 	UltimaVisita           time.Time                `orm:"column(ultima_visita);type(date);null"`
 }
 
-func (t *OdontologiaAnamnesis) TableName() string {
+func (t *Anamnesis) TableName() string {
 	return "anamnesis"
 }
 func init() {
-	orm.RegisterModel(new(OdontologiaAnamnesis))
+	orm.RegisterModel(new(Anamnesis))
 }
 
-// AddOdontologiaAnamnesis inserta un registro en la tabla anamnesis
+// AddAnamnesis inserta un registro en la tabla anamnesis
 // Último registro insertado con éxito
-func AddOdontologiaAnamnesis(m *OdontologiaAnamnesis) (id int64, err error) {
+func AddAnamnesis(m *Anamnesis) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetOdontologiaAnamnesisById obtiene un registro de la tabla anamnesis por su id
+// GetAnamnesisById obtiene un registro de la tabla anamnesis por su id
 // Id no existe
-func GetOdontologiaAnamnesisById(id int) (v *OdontologiaAnamnesis, err error) {
+func GetAnamnesisById(id int) (v *Anamnesis, err error) {
 	o := orm.NewOrm()
-	v = &OdontologiaAnamnesis{IdOdontologiaAnamnesis: id}
+	v = &Anamnesis{IdAnamnesis: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllOdontologiaAnamnesis consulta todas las anamnesis
+// GetAllAnamnesis consulta todas las anamnesis
 // No existen registros
-func GetAllOdontologiaAnamnesis(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllAnamnesis(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(OdontologiaAnamnesis))
+	qs := o.QueryTable(new(Anamnesis))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -111,7 +111,7 @@ func GetAllOdontologiaAnamnesis(query map[string]string, fields []string, sortby
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []OdontologiaAnamnesis
+	var l []Anamnesis
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -133,11 +133,11 @@ func GetAllOdontologiaAnamnesis(query map[string]string, fields []string, sortby
 	return nil, err
 }
 
-// UpdateOdontologiaAnamnesisById actualiza un registro de la tabla anamnesis
+// UpdateAnamnesisById actualiza un registro de la tabla anamnesis
 // El registro a actualizar no existe
-func UpdateOdontologiaAnamnesis(m *OdontologiaAnamnesis) (err error) {
+func UpdateAnamnesis(m *Anamnesis) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaAnamnesis{IdOdontologiaAnamnesis: m.IdOdontologiaAnamnesis}
+	v := Anamnesis{IdAnamnesis: m.IdAnamnesis}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -147,14 +147,14 @@ func UpdateOdontologiaAnamnesis(m *OdontologiaAnamnesis) (err error) {
 	return
 }
 
-// DeleteOdontologiaAnamnesis elimina un registro de la tabla anamnesis
+// DeleteAnamnesis elimina un registro de la tabla anamnesis
 // El registro a eliminar no existe
-func DeleteOdontologiaAnamnesis(id int) (err error) {
+func DeleteAnamnesis(id int) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaAnamnesis{IdOdontologiaAnamnesis: id}
+	v := Anamnesis{IdAnamnesis: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&OdontologiaAnamnesis{IdOdontologiaAnamnesis: id}); err == nil {
+		if num, err = o.Delete(&Anamnesis{IdAnamnesis: id}); err == nil {
 			fmt.Println("Número de registros eliminados en la base de datos:", num)
 		}
 	}

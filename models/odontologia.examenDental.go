@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type OdontologiaExamenDental struct {
+type ExamenDental struct {
 	IdExamenDental   int                   `orm:"column(id_examen_dental);pk;auto"`
 	IdHojaHistoria   *MedicinaHojaHistoria `orm:"column(id_hoja_historia);rel(fk);null"`
 	Supernumerarios  string                `orm:"column(supernumerarios);null"`
@@ -23,38 +23,38 @@ type OdontologiaExamenDental struct {
 	Observaciones    string                `orm:"column(observaciones);null"`
 }
 
-func (t *OdontologiaExamenDental) TableName() string {
+func (t *ExamenDental) TableName() string {
 	return "examendental"
 }
 func init() {
-	orm.RegisterModel(new(OdontologiaExamenDental))
+	orm.RegisterModel(new(ExamenDental))
 }
 
-// AddOdontologiaExamenDental inserta un registro en la tabla examendental
+// AddExamenDental inserta un registro en la tabla examendental
 // Último registro insertado con éxito
-func AddOdontologiaExamenDental(m *OdontologiaExamenDental) (id int64, err error) {
+func AddExamenDental(m *ExamenDental) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetOdontologiaExamenDentalById obtiene un registro de la tabla examendental por su id
+// GetExamenDentalById obtiene un registro de la tabla examendental por su id
 // Id no existe
-func GetOdontologiaExamenDentalById(id int) (v *OdontologiaExamenDental, err error) {
+func GetExamenDentalById(id int) (v *ExamenDental, err error) {
 	o := orm.NewOrm()
-	v = &OdontologiaExamenDental{IdExamenDental: id}
+	v = &ExamenDental{IdExamenDental: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllOdontologiaExamenDental obtiene todos los registros de la tabla examendental
+// GetAllExamenDental obtiene todos los registros de la tabla examendental
 // No existen registros
-func GetAllOdontologiaExamenDental(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllExamenDental(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(OdontologiaExamenDental))
+	qs := o.QueryTable(new(ExamenDental))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -98,7 +98,7 @@ func GetAllOdontologiaExamenDental(query map[string]string, fields []string, sor
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []OdontologiaExamenDental
+	var l []ExamenDental
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -120,11 +120,11 @@ func GetAllOdontologiaExamenDental(query map[string]string, fields []string, sor
 	return nil, err
 }
 
-// UpdateOdontologiaExamenDental actualiza un registro de la tabla examendental
+// UpdateExamenDental actualiza un registro de la tabla examendental
 // El registro a actualizar no existe
-func UpdateOdontologiaExamenDental(m *OdontologiaExamenDental) (err error) {
+func UpdateExamenDental(m *ExamenDental) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaExamenDental{IdExamenDental: m.IdExamenDental}
+	v := ExamenDental{IdExamenDental: m.IdExamenDental}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -135,14 +135,14 @@ func UpdateOdontologiaExamenDental(m *OdontologiaExamenDental) (err error) {
 	return
 }
 
-// DeleteOdontologiaExamenDental elimina un registro de la tabla examendental
+// DeleteExamenDental elimina un registro de la tabla examendental
 // El registro a eliminar no existe
-func DeleteOdontologiaExamenDental(id int) (err error) {
+func DeleteExamenDental(id int) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaExamenDental{IdExamenDental: id}
+	v := ExamenDental{IdExamenDental: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&OdontologiaExamenDental{IdExamenDental: id}); err == nil {
+		if num, err = o.Delete(&ExamenDental{IdExamenDental: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}

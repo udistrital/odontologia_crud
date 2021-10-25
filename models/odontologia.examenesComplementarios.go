@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type OdontologiaExamenesComplementarios struct {
+type ExamenesComplementarios struct {
 	IdExamenesComplementarios int    `orm:"column(id_examenes_complenmetarios);pk;auto"`
 	PeriapicalInicio          int    `orm:"column(periapical_inicio);null"`
 	PeriapicalFinal           int    `orm:"column(periapical_final);null"`
@@ -26,38 +26,38 @@ type OdontologiaExamenesComplementarios struct {
 	Otra                      string `orm:"column(otra);null"`
 }
 
-func (t *OdontologiaExamenesComplementarios) TableName() string {
+func (t *ExamenesComplementarios) TableName() string {
 	return "examenescomplementarios"
 }
 func init() {
-	orm.RegisterModel(new(OdontologiaExamenesComplementarios))
+	orm.RegisterModel(new(ExamenesComplementarios))
 }
 
-// AddOdontologiaExamenesComplementarios inserta un registro en la tabla examenescomplementarios
+// AddExamenesComplementarios inserta un registro en la tabla examenescomplementarios
 // Último registro insertado con éxito
-func AddOdontologiaExamenesComplementarios(m *OdontologiaExamenesComplementarios) (id int64, err error) {
+func AddExamenesComplementarios(m *ExamenesComplementarios) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetOdontologiaExamenesComplementariosById obtiene un registro de la tabla examenescomplementarios por su id
+// GetExamenesComplementariosById obtiene un registro de la tabla examenescomplementarios por su id
 // Id no existe
-func GetOdontologiaExamenesComplementariosById(id int) (v *OdontologiaExamenesComplementarios, err error) {
+func GetExamenesComplementariosById(id int) (v *ExamenesComplementarios, err error) {
 	o := orm.NewOrm()
-	v = &OdontologiaExamenesComplementarios{IdExamenesComplementarios: id}
+	v = &ExamenesComplementarios{IdExamenesComplementarios: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllOdontologiaExamenesComplementarios obtiene todos los registros de la tabla examenescomplementarios
+// GetAllExamenesComplementarios obtiene todos los registros de la tabla examenescomplementarios
 // No existen registros
-func GetAllOdontologiaExamenesComplementarios(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllExamenesComplementarios(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(OdontologiaExamenesComplementarios))
+	qs := o.QueryTable(new(ExamenesComplementarios))
 	for k, v := range query {
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
@@ -101,7 +101,7 @@ func GetAllOdontologiaExamenesComplementarios(query map[string]string, fields []
 			return nil, errors.New("error: campos de 'order' no utilizados")
 		}
 	}
-	var l []OdontologiaExamenesComplementarios
+	var l []ExamenesComplementarios
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -123,11 +123,11 @@ func GetAllOdontologiaExamenesComplementarios(query map[string]string, fields []
 	return nil, err
 }
 
-// UpdateOdontologiaExamenesComplementarios actualiza un registro de la tabla examenescomplementarios
+// UpdateExamenesComplementarios actualiza un registro de la tabla examenescomplementarios
 // El registro a actualizar no existe
-func UpdateOdontologiaExamenesComplementarios(m *OdontologiaExamenesComplementarios) (err error) {
+func UpdateExamenesComplementarios(m *ExamenesComplementarios) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaExamenesComplementarios{IdExamenesComplementarios: m.IdExamenesComplementarios}
+	v := ExamenesComplementarios{IdExamenesComplementarios: m.IdExamenesComplementarios}
 	if err = o.Read(&v); err == nil {
 		var num int64
 		if num, err = o.Update(m); err == nil {
@@ -137,14 +137,14 @@ func UpdateOdontologiaExamenesComplementarios(m *OdontologiaExamenesComplementar
 	return
 }
 
-// DeleteOdontologiaExamenesComplementarios elimina un registro de la tabla examenescomplementarios
+// DeleteExamenesComplementarios elimina un registro de la tabla examenescomplementarios
 // El registro a eliminar no existe
-func DeleteOdontologiaExamenesComplementarios(id int) (err error) {
+func DeleteExamenesComplementarios(id int) (err error) {
 	o := orm.NewOrm()
-	v := OdontologiaExamenesComplementarios{IdExamenesComplementarios: id}
+	v := ExamenesComplementarios{IdExamenesComplementarios: id}
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&OdontologiaExamenesComplementarios{IdExamenesComplementarios: id}); err == nil {
+		if num, err = o.Delete(&ExamenesComplementarios{IdExamenesComplementarios: id}); err == nil {
 			fmt.Println("Numero de registros eliminados:", num)
 		}
 	}
