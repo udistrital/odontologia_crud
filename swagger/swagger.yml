@@ -1009,7 +1009,7 @@ definitions:
     title: Diagnostico
     type: object
     properties:
-      Diagnostivo:
+      Diagnostico:
         type: string
       Evolucion:
         type: string
@@ -1085,11 +1085,11 @@ definitions:
         type: string
       SistemaLinfatico:
         type: string
-      SistemaMuscular:
-        type: string
       SistemaNervioso:
         type: string
       SistemaRegional:
+        type: string
+      SistemaVascular:
         type: string
   models.ExamenesComplementarios:
     title: ExamenesComplementarios

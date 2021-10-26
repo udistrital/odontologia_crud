@@ -12,9 +12,9 @@ import (
 
 type Anamnesis struct {
 	IdAnamnesis            int       `orm:"column(id_anamnesis);pk;auto"`
-	IdHistoriaClinica      *int      `orm:"column(id_historia_clinica);rel(fk);null"`
+	IdHistoriaClinica      int       `orm:"column(id_historia_clinica);null"`
 	Tratamiento            string    `orm:"column(tratamiento);null"`
-	Medicamentos           string    `orm:"column(medicamento);null"`
+	Medicamentos           string    `orm:"column(medicamentos);null"`
 	Alergias               string    `orm:"column(alergias);null"`
 	Hemorragias            string    `orm:"column(hemorragias);null"`
 	Irradiaciones          string    `orm:"column(irradiaciones);null"`

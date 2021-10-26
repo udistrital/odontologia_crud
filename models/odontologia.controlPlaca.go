@@ -11,8 +11,8 @@ import (
 )
 
 type ControlPlaca struct {
-	IdcontrolPlaca    int              `orm:"column(idcontrol_placa);pk;auto"`
-	IdHojaHistoria    *int             `orm:"column(id_hoja_historia);rel(fk);null"`
+	IdcontrolPlaca    int              `orm:"column(id_control_placa);pk;auto"`
+	IdHojaHistoria    int              `orm:"column(id_hoja_historia);null"`
 	IdTipoOdontograma *TipoOdontograma `orm:"column(id_tipo_odontograma);rel(fk);null"`
 	IndiceAnterior    int              `orm:"column(indice_anterior);null"`
 	IndiceActual      int              `orm:"column(indice_actual);null"`

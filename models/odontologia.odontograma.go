@@ -11,7 +11,7 @@ import (
 
 type Odontograma struct {
 	IdOdontograma     int              `orm:"column(id_odontograma);pk;auto"`
-	IdHojaHistoria    *int             `orm:"column(id_hoja_historia);rel(fk);null"`
+	IdHojaHistoria    int              `orm:"column(id_hoja_historia);null"`
 	IdTipoOdontograma *TipoOdontograma `orm:"column(id_tipo_odontograma);rel(fk);null"`
 	Diagrama          string           `orm:"column(diagrama);null"`
 	Observaciones     string           `orm:"column(observaciones);null"`

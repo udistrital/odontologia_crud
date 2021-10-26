@@ -1522,7 +1522,7 @@
             "title": "Diagnostico",
             "type": "object",
             "properties": {
-                "Diagnostivo": {
+                "Diagnostico": {
                     "type": "string"
                 },
                 "Evolucion": {
@@ -1633,13 +1633,13 @@
                 "SistemaLinfatico": {
                     "type": "string"
                 },
-                "SistemaMuscular": {
-                    "type": "string"
-                },
                 "SistemaNervioso": {
                     "type": "string"
                 },
                 "SistemaRegional": {
+                    "type": "string"
+                },
+                "SistemaVascular": {
                     "type": "string"
                 }
             }

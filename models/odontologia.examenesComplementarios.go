@@ -10,10 +10,10 @@ import (
 )
 
 type ExamenesComplementarios struct {
-	IdExamenesComplementarios int    `orm:"column(id_examenes_complenmetarios);pk;auto"`
+	IdExamenesComplementarios int    `orm:"column(id_examenes_complementarios);pk;auto"`
 	PeriapicalInicio          int    `orm:"column(periapical_inicio);null"`
 	PeriapicalFinal           int    `orm:"column(periapical_final);null"`
-	PanoramicaInicio          int    `orm:"column(panoramica_inicio);null"` //String nuxeo
+	PanoramicaInicio          int    `orm:"column(panoramica_inicio);null"`
 	OtraInicio                int    `orm:"column(otra_inicio);null"`
 	OtraFinal                 int    `orm:"column(otra_final);null"`
 	LaboratorioInicio         int    `orm:"column(laboratorio_inicio);null"`
