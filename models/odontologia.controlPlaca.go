@@ -17,7 +17,7 @@ type ControlPlaca struct {
 	IndiceAnterior    int              `orm:"column(indice_anterior);null"`
 	IndiceActual      int              `orm:"column(indice_actual);null"`
 	Fecha             time.Time        `orm:"column(fecha);type(date);null"`
-	Vestibulares      string           `orm:"column(vestibulares);null"`
+	Vestibulares      string           `orm:"column(vestibulares);type(json);null"`
 	Observaciones     string           `orm:"column(observaciones);null"`
 }
 
