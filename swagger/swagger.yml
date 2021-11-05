@@ -961,10 +961,10 @@ definitions:
         type: string
       Hipertension:
         type: string
-      IdAnamnesis:
+      HistoriaClinicaId:
         type: integer
         format: int64
-      IdHistoriaClinica:
+      Id:
         type: integer
         format: int64
       Irradiaciones:
@@ -987,12 +987,13 @@ definitions:
       Fecha:
         type: string
         format: datetime
-      IdHojaHistoria:
+      HistoriaClinicaId:
         type: integer
         format: int64
-      IdTipoOdontograma:
-        $ref: '#/definitions/models.TipoOdontograma'
-      IdcontrolPlaca:
+      HojaHistoriaId:
+        type: integer
+        format: int64
+      Id:
         type: integer
         format: int64
       IndiceActual:
@@ -1003,6 +1004,8 @@ definitions:
         format: int64
       Observaciones:
         type: string
+      TipoOdontograma:
+        $ref: '#/definitions/models.TipoOdontograma'
       Vestibulares:
         type: string
   models.Diagnostico:
@@ -1013,10 +1016,13 @@ definitions:
         type: string
       Evolucion:
         type: string
-      IdDiagnostico:
+      HistoriaClinica:
         type: integer
         format: int64
-      IdHojaHistoria:
+      HojaHistoriaId:
+        type: integer
+        format: int64
+      Id:
         type: integer
         format: int64
       Observaciones:
@@ -1029,10 +1035,13 @@ definitions:
     properties:
       Abrasion:
         type: string
-      IdExamenDental:
+      HistoriaClinicaId:
         type: integer
         format: int64
-      IdHojaHistoria:
+      HojaHistoriaId:
+        type: integer
+        format: int64
+      Id:
         type: integer
         format: int64
       Manchas:
@@ -1061,10 +1070,13 @@ definitions:
         type: string
       GlandulasSalivares:
         type: string
-      IdExamenEstomatologico:
+      HistoriaClinicaId:
         type: integer
         format: int64
-      IdHojaHistoria:
+      HojaHistoriaId:
+        type: integer
+        format: int64
+      Id:
         type: integer
         format: int64
       Labios:
@@ -1097,10 +1109,13 @@ definitions:
     properties:
       Coagulacion:
         type: string
-      IdExamenesComplementarios:
+      HistoriaClinicaId:
         type: integer
         format: int64
-      IdHojaHistoria:
+      HojaHistoriaId:
+        type: integer
+        format: int64
+      Id:
         type: integer
         format: int64
       LaboratorioFinal:
@@ -1115,6 +1130,9 @@ definitions:
         type: integer
         format: int64
       OtraInicio:
+        type: integer
+        format: int64
+      PanoramicaFinal:
         type: integer
         format: int64
       PanoramicaInicio:
@@ -1138,10 +1156,13 @@ definitions:
     properties:
       Diagrama:
         type: string
-      IdHojaHistoria:
+      HistoriaClinicaId:
         type: integer
         format: int64
-      IdOdontograma:
+      Id:
+        type: integer
+        format: int64
+      IdHojaHistoria:
         type: integer
         format: int64
       IdTipoOdontograma:
@@ -1155,6 +1176,8 @@ definitions:
     title: TipoOdontograma
     type: object
     properties:
+      Activo:
+        type: boolean
       Descripcion:
         type: string
       FechaCreacion:
@@ -1163,7 +1186,7 @@ definitions:
       FechaModificacion:
         type: string
         format: datetime
-      IdTipoOdontograma:
+      Id:
         type: integer
         format: int64
       Nombre:
