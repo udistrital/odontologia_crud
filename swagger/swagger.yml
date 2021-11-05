@@ -9,7 +9,7 @@ info:
   license:
     name: BSD-3-Clause
     url: http://opensource.org/licenses/BSD-3-Clause
-basePath: /v1
+basePath: /Odontologia
 paths:
   /Anamnesis/:
     get:
@@ -18,27 +18,27 @@ paths:
       description: consulta todos los registros de la tabla Anamnesis
       operationId: AnamnesisController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -132,27 +132,27 @@ paths:
       description: consulta todos los registros de la tabla ControlPlaca
       operationId: ControlPlacaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -246,27 +246,27 @@ paths:
       description: consulta todos los registros de la tabla Diagnostico
       operationId: DiagnosticoController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -360,27 +360,27 @@ paths:
       description: consulta todos los registros de la tabla ExamenDental
       operationId: ExamenDentalController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -474,27 +474,27 @@ paths:
       description: consulta todos los registros de la tabla ExamenEstomatologico
       operationId: ExamenEstomatologicoController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -588,27 +588,27 @@ paths:
       description: consulta todos los registros de la tabla ExamenesComplementarios
       operationId: ExamenesComplementariosController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -702,27 +702,27 @@ paths:
       description: consulta todos los registros de la tabla Odontograma
       operationId: OdontogramaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
@@ -816,27 +816,27 @@ paths:
       description: consulta todos los registros de la tabla OdontologiaTipoOdontograma
       operationId: TipoOdontogramaController.Get All
       parameters:
-      - in: consulta
+      - in: query
         name: query
         description: 'Filtro. Por ejemplo, col1: v1, col2: v2 ...'
         type: string
-      - in: consulta
+      - in: query
         name: fields
         description: Campos devueltos. Por ejemplo, col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: sortby
         description: Campos ordenados por. Por ejemplo, Col1, col2 ...
         type: string
-      - in: consulta
+      - in: query
         name: order
         description: El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...
         type: string
-      - in: consulta
+      - in: query
         name: limit
         description: Limite el tamaño del conjunto de resultados. Debe ser un número entero
         type: string
-      - in: consulta
+      - in: query
         name: offset
         description: Posición inicial del conjunto de resultados. Debe ser un número entero
         type: string
