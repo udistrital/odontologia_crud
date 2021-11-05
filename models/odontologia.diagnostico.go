@@ -10,12 +10,12 @@ import (
 )
 
 type Diagnostico struct {
-	IdDiagnostico  int    	`orm:"column(id_diagnostico);pk;auto"`
-	IdHojaHistoria int    	`orm:"column(id_hoja_historia);null"`
-	Diagnostico    string 	`orm:"column(diagnostico);null"`
-	Pronostico     string 	`orm:"column(pronostico);null"`
-	Evolucion      []string `orm:"column(evolucion);null"`
-	Observaciones  string 	`orm:"column(observaciones);null"`
+	IdDiagnostico  int    `orm:"column(id_diagnostico);pk;auto"`
+	IdHojaHistoria int    `orm:"column(id_hoja_historia);null"`
+	Diagnostico    string `orm:"column(diagnostico);null"`
+	Pronostico     string `orm:"column(pronostico);null"`
+	Evolucion      string `orm:"column(evolucion);type(json);null"`
+	Observaciones  string `orm:"column(observaciones);null"`
 }
 
 func (t *Diagnostico) TableName() string {

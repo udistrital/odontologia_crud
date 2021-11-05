@@ -11,11 +11,11 @@ import (
 )
 
 type TipoOdontograma struct {
-	IdTipoOdontograma int       `orm:"column(id_tipo_odontograma);pk;auto"`
-	Nombre            string    `orm:"column(nombre);null"`
-	Descripcion       string    `orm:"column(descripcion);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(date);null"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(date);null"`
+	IdTipoOdontograma int        `orm:"column(id_tipo_odontograma);pk;auto"`
+	Nombre            string     `orm:"column(nombre);null"`
+	Descripcion       string     `orm:"column(descripcion);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
 }
 
 func (p *TipoOdontograma) TableName() string {
