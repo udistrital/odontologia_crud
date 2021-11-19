@@ -699,7 +699,7 @@ paths:
     get:
       tags:
       - Odontograma
-      description: consulta todos los registros de la tabla Odontograma
+      description: consulta todos los registros de la tabla odontograma
       operationId: OdontogramaController.Get All
       parameters:
       - in: query
@@ -744,7 +744,7 @@ paths:
         description: Cuerpo para el contenido de Odontograma
         required: true
         schema:
-          $ref: '#/definitions/models.AccesoHOdontogramaistoriaClinica'
+          $ref: '#/definitions/models.Odontograma'
       responses:
         "201":
           description: '{int} models.Odontograma'
@@ -772,7 +772,7 @@ paths:
     put:
       tags:
       - Odontograma
-      description: actualizar un registro de la tabla Odontograma
+      description: actualizar un registro de la tabla odontograma
       operationId: OdontogramaController.Put
       parameters:
       - in: path
@@ -782,7 +782,7 @@ paths:
         type: string
       - in: body
         name: body
-        description: Cuerpo para el contenido de Odontograma
+        description: Cuerpo para el contenido de odontograma
         required: true
         schema:
           $ref: '#/definitions/models.Odontograma'
@@ -813,7 +813,7 @@ paths:
     get:
       tags:
       - TipoOdontograma
-      description: consulta todos los registros de la tabla OdontologiaTipoOdontograma
+      description: consulta todos los registros de la tabla TipoOdontograma
       operationId: TipoOdontogramaController.Get All
       parameters:
       - in: query
@@ -844,31 +844,31 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+            $ref: '#/definitions/models.TipoOdontograma'
         "403":
           description: ""
     post:
       tags:
       - TipoOdontograma
-      description: agregar un registro en la tabla OdontologiaTipoOdontograma
+      description: agregar un registro en la tabla TipoOdontograma
       operationId: TipoOdontogramaController.Post
       parameters:
       - in: body
         name: body
-        description: Cuerpo para el contenido de OdontologiaTipoOdontograma
+        description: Cuerpo para el contenido de TipoOdontograma
         required: true
         schema:
-          $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+          $ref: '#/definitions/models.TipoOdontograma'
       responses:
         "201":
-          description: '{int} models.OdontologiaTipoOdontograma'
+          description: '{int} models.TipoOdontograma'
         "403":
           description: Cuerpo Vacío
   /TipoOdontograma/{id}:
     get:
       tags:
       - TipoOdontograma
-      description: consultar un registro de la tabla OdontologiaTipoOdontograma por su id
+      description: consultar un registro de la tabla TipoOdontograma por su id
       operationId: TipoOdontogramaController.Get One
       parameters:
       - in: path
@@ -880,13 +880,13 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+            $ref: '#/definitions/models.TipoOdontograma'
         "403":
           description: :id está vacío
     put:
       tags:
       - TipoOdontograma
-      description: actualizar un registro de la tabla OdontologiaTipoOdontograma
+      description: actualizar un registro de la tabla TipoOdontograma
       operationId: TipoOdontogramaController.Put
       parameters:
       - in: path
@@ -899,18 +899,18 @@ paths:
         description: Cuerpo para el contenido de AccesoHistoriaClinica
         required: true
         schema:
-          $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+          $ref: '#/definitions/models.TipoOdontograma'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.OdontologiaTipoOdontograma'
+            $ref: '#/definitions/models.TipoOdontograma'
         "403":
           description: :id no es entero
     delete:
       tags:
       - TipoOdontograma
-      description: elimina un registro de la tabla OdontologiaTipoOdontograma
+      description: elimina un registro de la tabla TipoOdontograma
       operationId: TipoOdontogramaController.Delete
       parameters:
       - in: path
@@ -924,9 +924,6 @@ paths:
         "403":
           description: Id vacío
 definitions:
-  models.AccesoHOdontogramaistoriaClinica:
-    title: AccesoHOdontogramaistoriaClinica
-    type: object
   models.Anamnesis:
     title: Anamnesis
     type: object
@@ -1169,9 +1166,6 @@ definitions:
         $ref: '#/definitions/models.TipoOdontograma'
       Observaciones:
         type: string
-  models.OdontologiaTipoOdontograma:
-    title: OdontologiaTipoOdontograma
-    type: object
   models.TipoOdontograma:
     title: TipoOdontograma
     type: object

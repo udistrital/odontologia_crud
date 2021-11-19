@@ -27,7 +27,7 @@ func (c *OdontogramaController) URLMapping() {
 // Post ...
 // @Title Post
 // @Description agregar un registro en la tabla Odontograma
-// @Param	body		body 	models.AccesoHOdontogramaistoriaClinica	true		"Cuerpo para el contenido de Odontograma"
+// @Param	body		body 	models.Odontograma	true		"Cuerpo para el contenido de Odontograma"
 // @Success 201 {int} models.Odontograma
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
@@ -67,7 +67,7 @@ func (c *OdontogramaController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description consulta todos los registros de la tabla Odontograma
+// @Description consulta todos los registros de la tabla odontograma
 // @Param   query   query    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
 // @Param   fields  query    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
 // @Param   sortby  query    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
@@ -129,9 +129,9 @@ func (c *OdontogramaController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description actualizar un registro de la tabla Odontograma
+// @Description actualizar un registro de la tabla odontograma
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.Odontograma	true		"Cuerpo para el contenido de Odontograma"
+// @Param	body		body 	models.Odontograma	true		"Cuerpo para el contenido de odontograma"
 // @Success 200 {object} models.Odontograma
 // @Failure 403 :id no es entero
 // @router /:id [put]

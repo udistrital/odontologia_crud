@@ -26,9 +26,9 @@ func (c *TipoOdontogramaController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description agregar un registro en la tabla OdontologiaTipoOdontograma
-// @Param	body		body 	models.OdontologiaTipoOdontograma	true		"Cuerpo para el contenido de OdontologiaTipoOdontograma"
-// @Success 201 {int} models.OdontologiaTipoOdontograma
+// @Description agregar un registro en la tabla TipoOdontograma
+// @Param	body		body 	models.TipoOdontograma	true		"Cuerpo para el contenido de TipoOdontograma"
+// @Success 201 {int} models.TipoOdontograma
 // @Failure 403 Cuerpo Vacío
 // @router / [post]
 func (c *TipoOdontogramaController) Post() {
@@ -48,9 +48,9 @@ func (c *TipoOdontogramaController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description consultar un registro de la tabla OdontologiaTipoOdontograma por su id
+// @Description consultar un registro de la tabla TipoOdontograma por su id
 // @Param	id		path 	string	true		"Id a consultar"
-// @Success 200 {object} models.OdontologiaTipoOdontograma
+// @Success 200 {object} models.TipoOdontograma
 // @Failure 403 :id está vacío
 // @router /:id [get]
 func (c *TipoOdontogramaController) GetOne() {
@@ -67,14 +67,14 @@ func (c *TipoOdontogramaController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description consulta todos los registros de la tabla OdontologiaTipoOdontograma
+// @Description consulta todos los registros de la tabla TipoOdontograma
 // @Param   query   query    string  false   "Filtro. Por ejemplo, col1: v1, col2: v2 ..."
 // @Param   fields  query    string  false   "Campos devueltos. Por ejemplo, col1, col2 ..."
 // @Param   sortby  query    string  false   "Campos ordenados por. Por ejemplo, Col1, col2 ..."
 // @Param   order   query    string  false   "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ..."
 // @Param   limit   query    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
 // @Param   offset  query    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
-// @Success 200 {object} models.OdontologiaTipoOdontograma
+// @Success 200 {object} models.TipoOdontograma
 // @Failure 403
 // @router / [get]
 func (c *TipoOdontogramaController) GetAll() {
@@ -129,10 +129,10 @@ func (c *TipoOdontogramaController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description actualizar un registro de la tabla OdontologiaTipoOdontograma
+// @Description actualizar un registro de la tabla TipoOdontograma
 // @Param	id		path 	string	true		"Id del registro a actualizar"
-// @Param	body		body 	models.OdontologiaTipoOdontograma	true		"Cuerpo para el contenido de AccesoHistoriaClinica"
-// @Success 200 {object} models.OdontologiaTipoOdontograma
+// @Param	body		body 	models.TipoOdontograma	true		"Cuerpo para el contenido de AccesoHistoriaClinica"
+// @Success 200 {object} models.TipoOdontograma
 // @Failure 403 :id no es entero
 // @router /:id [put]
 func (c *TipoOdontogramaController) Put() {
@@ -153,7 +153,7 @@ func (c *TipoOdontogramaController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description elimina un registro de la tabla OdontologiaTipoOdontograma
+// @Description elimina un registro de la tabla TipoOdontograma
 // @Param	id		path 	string	true		"Id del registro a eliminar"
 // @Success 200 {string} borrado exitoso!
 // @Failure 403 Id vacío
