@@ -26,13 +26,13 @@ type Anamnesis struct {
 	Hepatitis              string     `orm:"column(hepatitis);null"`
 	Hipertension           string     `orm:"column(hipertension);null"`
 	AntecedenteFamiliar    string     `orm:"column(antecedente_familiar);null"`
-	Cepillado              string     `orm:"column(cepillado);null"`
-	Ceda                   string     `orm:"column(ceda);null"`
-	Enjuague               string     `orm:"column(enjuague);null"`
+	Cepillado              int        `orm:"column(cepillado);null"`
+	Seda                   int        `orm:"column(seda);null"`
+	Enjuague               int        `orm:"column(enjuague);null"`
 	Dulces                 string     `orm:"column(dulces);null"`
 	Fuma                   string     `orm:"column(fuma);null"`
 	Chicle                 string     `orm:"column(chicle);null"`
-	Otras                  string     `orm:"column(otras);null"`
+	Otros				   string	  `orm:"column(otros);null"`
 	UltimaVisita           *time.Time `orm:"column(ultima_visita);type(timestamp without time zone);null"`
 }
 

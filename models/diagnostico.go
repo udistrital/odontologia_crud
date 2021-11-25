@@ -13,10 +13,16 @@ type Diagnostico struct {
 	Id              int    `orm:"column(id_diagnostico);pk;auto"`
 	HistoriaClinica int    `orm:"column(id_historia_clinica);null"`
 	HojaHistoriaId  int    `orm:"column(id_hoja_historia);null"`
+	Motivo     		string `orm:"column(motivo);null"`
+	Evaluacion     	string `orm:"column(evaluacion);null"`
 	Diagnostico     string `orm:"column(diagnostico);null"`
 	Pronostico      string `orm:"column(pronostico);null"`
 	Evolucion       string `orm:"column(evolucion);type(json);null"`
 	Observaciones   string `orm:"column(observaciones);null"`
+	Temperatura   	string `orm:"column(temperatura);null"`
+	Pulso   		string `orm:"column(pulso);null"`
+	TensionArterial string `orm:"column(tension_arterial);null"`
+	Respiracion   	string `orm:"column(respiracion);null"`
 }
 
 func (t *Diagnostico) TableName() string {

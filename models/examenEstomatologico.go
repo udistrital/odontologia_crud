@@ -10,24 +10,22 @@ import (
 )
 
 type ExamenEstomatologico struct {
-	Id                   int    `orm:"column(id_examen_estomatologico);pk;auto"`
-	HistoriaClinicaId    int    `orm:"column(id_historia_clinica);null"`
-	HojaHistoriaId       int    `orm:"column(id_hoja_historia);null"`
-	Observaciones        string `orm:"column(observaciones);null"`
-	ArticulacionTemporo  string `orm:"column(articulacion_temporo);null"`
-	Labios               string `orm:"column(labios);null"`
-	Lengua               string `orm:"column(lengua);null"`
-	Paladar              string `orm:"column(paladar);null"`
-	PisoBoca             string `orm:"column(piso_boca);null"`
-	Carrillos            string `orm:"column(carrillos);null"`
-	GlandulasSalivares   string `orm:"column(glandulas_salivares);null"`
-	Maxilares            string `orm:"column(maxilares);null"`
-	SenosMaxilares       string `orm:"column(senos_maxilares);null"`
-	MusculosMasticadores string `orm:"column(musculos_masticadores);null"`
-	SistemaVascular      string `orm:"column(sistema_vascular);null"`
-	SistemaNervioso      string `orm:"column(sistema_nervioso);null"`
-	SistemaLinfatico     string `orm:"column(sistema_linfatico);null"`
-	SistemaRegional      string `orm:"column(sistema_regional);null"`
+	Id                   		int    `orm:"column(id_examen_estomatologico);pk;auto"`
+	HistoriaClinicaId    		int    `orm:"column(id_historia_clinica);null"`
+	HojaHistoriaId       		int    `orm:"column(id_hoja_historia);null"`
+	ArticulacionTemporo  		string `orm:"column(articulacion_temporo);null"`
+	Labios               		string `orm:"column(labios);null"`
+	Lengua               		string `orm:"column(lengua);null"`
+	Paladar              		string `orm:"column(paladar);null"`
+	PisoBoca             		string `orm:"column(piso_boca);null"`
+	Carrillos            		string `orm:"column(carrillos);null"`
+	GlandulasSalivares   		string `orm:"column(glandulas_salivares);null"`
+	Maxilares            		string `orm:"column(maxilares);null"`
+	SenosMaxilares       		string `orm:"column(senos_maxilares);null"`
+	MusculosMasticadores 		string `orm:"column(musculos_masticadores);null"`
+	SistemaVascular      		string `orm:"column(sistema_vascular);null"`
+	SistemaNervioso      		string `orm:"column(sistema_nervioso);null"`
+	SistemaLinfaticoRegional 	string `orm:"column(sistema_linfatico_regional);null"`
 }
 
 func (t *ExamenEstomatologico) TableName() string {
