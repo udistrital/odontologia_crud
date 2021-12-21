@@ -13,14 +13,14 @@ type ExamenesComplementarios struct {
 	Id                int    `orm:"column(id_examenes_complementarios);pk;auto"`
 	HistoriaClinicaId int    `orm:"column(id_historia_clinica);null"`
 	HojaHistoriaId    int    `orm:"column(id_hoja_historia);null"`
-	PeriapicalInicio  int    `orm:"column(periapical_inicio);null"`
-	PeriapicalFinal   int    `orm:"column(periapical_final);null"`
-	PanoramicaInicio  int    `orm:"column(panoramica_inicio);null"`
-	PanoramicaFinal   int    `orm:"column(panoramica_final);null"`
-	OtraInicio        int    `orm:"column(otra_inicio);null"`
-	OtraFinal         int    `orm:"column(otra_final);null"`
-	LaboratorioInicio int    `orm:"column(laboratorio_inicio);null"`
-	LaboratorioFinal  int    `orm:"column(laboratorio_final);null"`
+	PeriapicalInicio  string `orm:"column(periapical_inicio);null"`
+	PeriapicalFinal   string `orm:"column(periapical_final);null"`
+	PanoramicaInicio  string `orm:"column(panoramica_inicio);null"`
+	PanoramicaFinal   string `orm:"column(panoramica_final);null"`
+	OtraInicio        string `orm:"column(otra_inicio);null"`
+	OtraFinal         string `orm:"column(otra_final);null"`
+	LaboratorioInicio string `orm:"column(laboratorio_inicio);null"`
+	LaboratorioFinal  string `orm:"column(laboratorio_final);null"`
 	Tp                string `orm:"column(tp);null"`
 	Tpt               string `orm:"column(tpt);null"`
 	Coagulacion       string `orm:"column(coagulacion);null"`
