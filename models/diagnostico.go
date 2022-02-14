@@ -20,6 +20,7 @@ type Diagnostico struct {
 	Pulso   		string `orm:"column(pulso);null"`
 	TensionArterial string `orm:"column(tension_arterial);null"`
 	Respiracion   	string `orm:"column(respiracion);null"`
+	Medicamento     string `orm:"column(medicamento);null"`
 }
 
 func (t *Diagnostico) TableName() string {
