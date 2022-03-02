@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -26,6 +27,9 @@ type ExamenEstomatologico struct {
 	SistemaVascular      		string `orm:"column(sistema_vascular);null"`
 	SistemaNervioso      		string `orm:"column(sistema_nervioso);null"`
 	SistemaLinfaticoRegional 	string `orm:"column(sistema_linfatico_regional);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *ExamenEstomatologico) TableName() string {
