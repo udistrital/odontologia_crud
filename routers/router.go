@@ -15,7 +15,7 @@ import (
 )
 
 func init() {
-	ns := beego.NewNamespace("/Odontologia",
+	ns := beego.NewNamespace("/v1",
 		beego.NSNamespace("/Anamnesis",
 			beego.NSInclude(
 				&controllers.AnamnesisController{},
