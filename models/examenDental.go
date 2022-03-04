@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -22,6 +23,9 @@ type ExamenDental struct {
 	Oclusion          string `orm:"column(oclusion);null"`
 	Otros             string `orm:"column(otros);null"`
 	Observaciones     string `orm:"column(observaciones);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *ExamenDental) TableName() string {

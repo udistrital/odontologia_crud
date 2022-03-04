@@ -34,6 +34,9 @@ type Anamnesis struct {
 	Chicle                 string     `orm:"column(chicle);null"`
 	Otros				   string	  `orm:"column(otros);null"`
 	UltimaVisita           *time.Time `orm:"column(ultima_visita);type(timestamp without time zone);null"`
+	FechaCreacion     *time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);null"`
+	FechaModificacion *time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);null"`
+	Activo            bool       `orm:"column(activo);null"`
 }
 
 func (t *Anamnesis) TableName() string {
