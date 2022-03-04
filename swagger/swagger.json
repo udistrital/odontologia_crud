@@ -13,7 +13,7 @@
             "url": "http://opensource.org/licenses/BSD-3-Clause"
         }
     },
-    "basePath": "/v1",
+    "basePath": "/Odontologia",
     "paths": {
         "/Anamnesis/": {
             "get": {
@@ -24,37 +24,37 @@
                 "operationId": "AnamnesisController.Get All",
                 "parameters": [
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "query",
                         "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "fields",
                         "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "sortby",
                         "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "order",
                         "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "limit",
                         "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "offset",
                         "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
@@ -188,179 +188,6 @@
                 }
             }
         },
-        "/ControlPlaca/": {
-            "get": {
-                "tags": [
-                    "ControlPlaca"
-                ],
-                "description": "consulta todos los registros de la tabla ControlPlaca",
-                "operationId": "ControlPlacaController.Get All",
-                "parameters": [
-                    {
-                        "in": "consulta",
-                        "name": "query",
-                        "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "fields",
-                        "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "sortby",
-                        "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "order",
-                        "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "limit",
-                        "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    },
-                    {
-                        "in": "consulta",
-                        "name": "offset",
-                        "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.ControlPlaca"
-                        }
-                    },
-                    "403": {
-                        "description": ""
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "ControlPlaca"
-                ],
-                "description": "agregar un registro en la tabla ControlPlaca",
-                "operationId": "ControlPlacaController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de ControlPlaca",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.ControlPlaca"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.ControlPlaca"
-                    },
-                    "403": {
-                        "description": "Cuerpo Vacío"
-                    }
-                }
-            }
-        },
-        "/ControlPlaca/{id}": {
-            "get": {
-                "tags": [
-                    "ControlPlaca"
-                ],
-                "description": "consultar un registro de la tabla ControlPlaca por su id",
-                "operationId": "ControlPlacaController.Get One",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id a consultar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.ControlPlaca"
-                        }
-                    },
-                    "403": {
-                        "description": ":id está vacío"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "ControlPlaca"
-                ],
-                "description": "actualizar un registro de la tabla ControlPlaca",
-                "operationId": "ControlPlacaController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a actualizar",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Cuerpo para el contenido de ControlPlaca",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.ControlPlaca"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.ControlPlaca"
-                        }
-                    },
-                    "403": {
-                        "description": ":id no es entero"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "ControlPlaca"
-                ],
-                "description": "elimina un registro de la tabla ControlPlaca",
-                "operationId": "ControlPlacaController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id del registro a eliminar",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} borrado exitoso!"
-                    },
-                    "403": {
-                        "description": "Id vacío"
-                    }
-                }
-            }
-        },
         "/Diagnostico/": {
             "get": {
                 "tags": [
@@ -370,37 +197,37 @@
                 "operationId": "DiagnosticoController.Get All",
                 "parameters": [
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "query",
                         "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "fields",
                         "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "sortby",
                         "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "order",
                         "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "limit",
                         "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "offset",
                         "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
@@ -543,37 +370,37 @@
                 "operationId": "ExamenDentalController.Get All",
                 "parameters": [
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "query",
                         "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "fields",
                         "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "sortby",
                         "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "order",
                         "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "limit",
                         "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "offset",
                         "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
@@ -716,37 +543,37 @@
                 "operationId": "ExamenEstomatologicoController.Get All",
                 "parameters": [
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "query",
                         "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "fields",
                         "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "sortby",
                         "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "order",
                         "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "limit",
                         "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "offset",
                         "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
@@ -889,37 +716,37 @@
                 "operationId": "ExamenesComplementariosController.Get All",
                 "parameters": [
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "query",
                         "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "fields",
                         "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "sortby",
                         "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "order",
                         "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "limit",
                         "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "offset",
                         "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
@@ -1058,41 +885,41 @@
                 "tags": [
                     "Odontograma"
                 ],
-                "description": "consulta todos los registros de la tabla Odontograma",
+                "description": "consulta todos los registros de la tabla odontograma",
                 "operationId": "OdontogramaController.Get All",
                 "parameters": [
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "query",
                         "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "fields",
                         "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "sortby",
                         "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "order",
                         "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "limit",
                         "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "offset",
                         "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
@@ -1123,7 +950,7 @@
                         "description": "Cuerpo para el contenido de Odontograma",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.AccesoHOdontogramaistoriaClinica"
+                            "$ref": "#/definitions/models.Odontograma"
                         }
                     }
                 ],
@@ -1169,7 +996,7 @@
                 "tags": [
                     "Odontograma"
                 ],
-                "description": "actualizar un registro de la tabla Odontograma",
+                "description": "actualizar un registro de la tabla odontograma",
                 "operationId": "OdontogramaController.Put",
                 "parameters": [
                     {
@@ -1182,7 +1009,7 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Cuerpo para el contenido de Odontograma",
+                        "description": "Cuerpo para el contenido de odontograma",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.Odontograma"
@@ -1231,41 +1058,41 @@
                 "tags": [
                     "TipoOdontograma"
                 ],
-                "description": "consulta todos los registros de la tabla OdontologiaTipoOdontograma",
+                "description": "consulta todos los registros de la tabla TipoOdontograma",
                 "operationId": "TipoOdontogramaController.Get All",
                 "parameters": [
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "query",
                         "description": "Filtro. Por ejemplo, col1: v1, col2: v2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "fields",
                         "description": "Campos devueltos. Por ejemplo, col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "sortby",
                         "description": "Campos ordenados por. Por ejemplo, Col1, col2 ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "order",
                         "description": "El orden correspondiente a cada campo de clasificación, si es un valor único, se aplica a todos los campos de clasificación. Por ejemplo, desc, asc ...",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "limit",
                         "description": "Limite el tamaño del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
                     },
                     {
-                        "in": "consulta",
+                        "in": "query",
                         "name": "offset",
                         "description": "Posición inicial del conjunto de resultados. Debe ser un número entero",
                         "type": "string"
@@ -1275,7 +1102,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.OdontologiaTipoOdontograma"
+                            "$ref": "#/definitions/models.TipoOdontograma"
                         }
                     },
                     "403": {
@@ -1287,22 +1114,22 @@
                 "tags": [
                     "TipoOdontograma"
                 ],
-                "description": "agregar un registro en la tabla OdontologiaTipoOdontograma",
+                "description": "agregar un registro en la tabla TipoOdontograma",
                 "operationId": "TipoOdontogramaController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Cuerpo para el contenido de OdontologiaTipoOdontograma",
+                        "description": "Cuerpo para el contenido de TipoOdontograma",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.OdontologiaTipoOdontograma"
+                            "$ref": "#/definitions/models.TipoOdontograma"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.OdontologiaTipoOdontograma"
+                        "description": "{int} models.TipoOdontograma"
                     },
                     "403": {
                         "description": "Cuerpo Vacío"
@@ -1315,7 +1142,7 @@
                 "tags": [
                     "TipoOdontograma"
                 ],
-                "description": "consultar un registro de la tabla OdontologiaTipoOdontograma por su id",
+                "description": "consultar un registro de la tabla TipoOdontograma por su id",
                 "operationId": "TipoOdontogramaController.Get One",
                 "parameters": [
                     {
@@ -1330,7 +1157,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.OdontologiaTipoOdontograma"
+                            "$ref": "#/definitions/models.TipoOdontograma"
                         }
                     },
                     "403": {
@@ -1342,7 +1169,7 @@
                 "tags": [
                     "TipoOdontograma"
                 ],
-                "description": "actualizar un registro de la tabla OdontologiaTipoOdontograma",
+                "description": "actualizar un registro de la tabla TipoOdontograma",
                 "operationId": "TipoOdontogramaController.Put",
                 "parameters": [
                     {
@@ -1358,7 +1185,7 @@
                         "description": "Cuerpo para el contenido de AccesoHistoriaClinica",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.OdontologiaTipoOdontograma"
+                            "$ref": "#/definitions/models.TipoOdontograma"
                         }
                     }
                 ],
@@ -1366,7 +1193,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.OdontologiaTipoOdontograma"
+                            "$ref": "#/definitions/models.TipoOdontograma"
                         }
                     },
                     "403": {
@@ -1378,7 +1205,7 @@
                 "tags": [
                     "TipoOdontograma"
                 ],
-                "description": "elimina un registro de la tabla OdontologiaTipoOdontograma",
+                "description": "elimina un registro de la tabla TipoOdontograma",
                 "operationId": "TipoOdontogramaController.Delete",
                 "parameters": [
                     {
@@ -1401,10 +1228,6 @@
         }
     },
     "definitions": {
-        "models.AccesoHOdontogramaistoriaClinica": {
-            "title": "AccesoHOdontogramaistoriaClinica",
-            "type": "object"
-        },
         "models.Anamnesis": {
             "title": "Anamnesis",
             "type": "object",
@@ -1418,11 +1241,9 @@
                 "Cardiopatias": {
                     "type": "string"
                 },
-                "Ceda": {
-                    "type": "string"
-                },
                 "Cepillado": {
-                    "type": "string"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Chicle": {
                     "type": "string"
@@ -1437,7 +1258,8 @@
                     "type": "string"
                 },
                 "Enjuague": {
-                    "type": "string"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "FiebreReumatica": {
                     "type": "string"
@@ -1454,11 +1276,11 @@
                 "Hipertension": {
                     "type": "string"
                 },
-                "IdAnamnesis": {
+                "HistoriaClinicaId": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "IdHistoriaClinica": {
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -1468,8 +1290,12 @@
                 "Medicamentos": {
                     "type": "string"
                 },
-                "Otras": {
+                "Otros": {
                     "type": "string"
+                },
+                "Seda": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Sinusitis": {
                     "type": "string"
@@ -1483,41 +1309,6 @@
                 }
             }
         },
-        "models.ControlPlaca": {
-            "title": "ControlPlaca",
-            "type": "object",
-            "properties": {
-                "Fecha": {
-                    "type": "string",
-                    "format": "datetime"
-                },
-                "IdHojaHistoria": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "IdTipoOdontograma": {
-                    "$ref": "#/definitions/models.TipoOdontograma"
-                },
-                "IdcontrolPlaca": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "IndiceActual": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "IndiceAnterior": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "Observaciones": {
-                    "type": "string"
-                },
-                "Vestibulares": {
-                    "type": "string"
-                }
-            }
-        },
         "models.Diagnostico": {
             "title": "Diagnostico",
             "type": "object",
@@ -1525,21 +1316,43 @@
                 "Diagnostico": {
                     "type": "string"
                 },
+                "Evaluacion": {
+                    "type": "string"
+                },
                 "Evolucion": {
                     "type": "string"
                 },
-                "IdDiagnostico": {
+                "HistoriaClinica": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "IdHojaHistoria": {
+                "HojaHistoriaId": {
                     "type": "integer",
                     "format": "int64"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Motivo": {
+                    "type": "string"
                 },
                 "Observaciones": {
                     "type": "string"
                 },
                 "Pronostico": {
+                    "type": "string"
+                },
+                "Pulso": {
+                    "type": "string"
+                },
+                "Respiracion": {
+                    "type": "string"
+                },
+                "Temperatura": {
+                    "type": "string"
+                },
+                "TensionArterial": {
                     "type": "string"
                 }
             }
@@ -1551,11 +1364,15 @@
                 "Abrasion": {
                     "type": "string"
                 },
-                "IdExamenDental": {
+                "HistoriaClinicaId": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "IdHojaHistoria": {
+                "HojaHistoriaId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -1598,11 +1415,15 @@
                 "GlandulasSalivares": {
                     "type": "string"
                 },
-                "IdExamenEstomatologico": {
+                "HistoriaClinicaId": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "IdHojaHistoria": {
+                "HojaHistoriaId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -1618,9 +1439,6 @@
                 "MusculosMasticadores": {
                     "type": "string"
                 },
-                "Observaciones": {
-                    "type": "string"
-                },
                 "Paladar": {
                     "type": "string"
                 },
@@ -1630,13 +1448,10 @@
                 "SenosMaxilares": {
                     "type": "string"
                 },
-                "SistemaLinfatico": {
+                "SistemaLinfaticoRegional": {
                     "type": "string"
                 },
                 "SistemaNervioso": {
-                    "type": "string"
-                },
-                "SistemaRegional": {
                     "type": "string"
                 },
                 "SistemaVascular": {
@@ -1651,11 +1466,15 @@
                 "Coagulacion": {
                     "type": "string"
                 },
-                "IdExamenesComplementarios": {
+                "HistoriaClinicaId": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "IdHojaHistoria": {
+                "HojaHistoriaId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -1675,6 +1494,10 @@
                     "format": "int64"
                 },
                 "OtraInicio": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PanoramicaFinal": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -1708,11 +1531,15 @@
                 "Diagrama": {
                     "type": "string"
                 },
-                "IdHojaHistoria": {
+                "HistoriaClinicaId": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "IdOdontograma": {
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IdHojaHistoria": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -1724,14 +1551,13 @@
                 }
             }
         },
-        "models.OdontologiaTipoOdontograma": {
-            "title": "OdontologiaTipoOdontograma",
-            "type": "object"
-        },
         "models.TipoOdontograma": {
             "title": "TipoOdontograma",
             "type": "object",
             "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
                 "Descripcion": {
                     "type": "string"
                 },
@@ -1743,7 +1569,7 @@
                     "type": "string",
                     "format": "datetime"
                 },
-                "IdTipoOdontograma": {
+                "Id": {
                     "type": "integer",
                     "format": "int64"
                 },

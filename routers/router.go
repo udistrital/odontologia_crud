@@ -21,11 +21,6 @@ func init() {
 				&controllers.AnamnesisController{},
 			),
 		),
-		beego.NSNamespace("/ControlPlaca",
-			beego.NSInclude(
-				&controllers.ControlPlacaController{},
-			),
-		),
 		beego.NSNamespace("/Diagnostico",
 			beego.NSInclude(
 				&controllers.DiagnosticoController{},
