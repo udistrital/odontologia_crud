@@ -9,6 +9,7 @@ import (
 	"Odontologia/models"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 )
 
 type ExamenDentalController struct {
@@ -36,12 +37,15 @@ func (c *ExamenDentalController) Post() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models.AddExamenDental(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
-		} else {
-			c.Data["json"] = err.Error()
+c.Data["json"] = map[string]interface{}{"Success": true, "Status": "201", "Message": "Registration successful", "Data": v}		} else {
+logs.Error(err)
+c.Data["mesaage"] = "Error service POST: The request contains an incorrect data type or an invalid parameter"
+c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+logs.Error(err)
+c.Data["mesaage"] = "Error service POST: The request contains an incorrect data type or an invalid parameter"
+c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -58,10 +62,11 @@ func (c *ExamenDentalController) GetOne() {
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetExamenDentalById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+logs.Error(err)
+c.Data["mesaage"] = "Error service GetOne: The request contains an incorrect parameter or no record exists"
+ c.Abort("404")
 	} else {
-		c.Data["json"] = v
-	}
+c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Request successful", "Data": v}	}
 	c.ServeJSON()
 }
 
@@ -75,7 +80,7 @@ func (c *ExamenDentalController) GetOne() {
 // @Param   limit   query    string  false   "Limite el tamaño del conjunto de resultados. Debe ser un número entero"
 // @Param   offset  query    string  false   "Posición inicial del conjunto de resultados. Debe ser un número entero"
 // @Success 200 {object} models.ExamenDental
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *ExamenDentalController) GetAll() {
 	var fields []string
@@ -120,9 +125,14 @@ func (c *ExamenDentalController) GetAll() {
 	}
 	l, err := models.GetAllExamenDental(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+logs.Error(err)
+c.Data["mesaage"] = "Error service GetAll: The request contains an incorrect parameter or no record exists"
+ c.Abort("404")
 	} else {
-		c.Data["json"] = l
+if l == nil {
+l = append(l, map[string]interface{}{})
+}
+c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Request successful", "Data": l}
 	}
 	c.ServeJSON()
 }
@@ -141,12 +151,16 @@ func (c *ExamenDentalController) Put() {
 	v := models.ExamenDental{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateExamenDental(&v); err == nil {
-			c.Data["json"] = "OK"
+c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Update successful", "Data": v}
 		} else {
-			c.Data["json"] = err.Error()
+logs.Error(err)
+c.Data["mesaage"] = "Error service Put: The request contains an incorrect data type or an invalid parameter"
+ c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+logs.Error(err)
+c.Data["mesaage"] = "Error service Put: The request contains an incorrect data type or an invalid parameter"
+ c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -162,9 +176,12 @@ func (c *ExamenDentalController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteExamenDental(id); err == nil {
-		c.Data["json"] = "OK"
+d := map[string]interface{}{"Id": id}
+c.Data["json"] = map[string]interface{}{"Success": true, "Status": "200", "Message": "Delete successful", "Data": d}
 	} else {
-		c.Data["json"] = err.Error()
+logs.Error(err)
+c.Data["mesaage"] = "Error service Delete: Request contains incorrect parameter"
+ c.Abort("404")
 	}
 	c.ServeJSON()
 }
